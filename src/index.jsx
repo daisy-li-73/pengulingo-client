@@ -4,13 +4,20 @@ import {
   BrowserRouter, Routes, Route, NavLink, useParams,
 } from 'react-router-dom';
 import './style.scss';
+import Controls from './components/controls';
+import Counter from './components/counter';
 
 function About() {
   return <div> All there is to know about me </div>;
 }
 
 function Welcome() {
-  return <div>Welcome</div>;
+  return (
+    <div>Welcome
+      <Counter />
+      <Controls />
+    </div>
+  );
 }
 
 function Nav() {
