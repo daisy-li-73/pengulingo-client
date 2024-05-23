@@ -1,9 +1,28 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './NavBar';
+import {
+  BrowserRouter, Routes, Route, NavLink,
+} from 'react-router-dom';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
+}
+
+function NavBar(props) {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/creategame">Create Game</NavLink>
+        </li>
+        <li>
+          <NavLink to="/joingame">Join Game</NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 function Home(props) {
