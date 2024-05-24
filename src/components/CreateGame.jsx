@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import balloonsPic from '../img/balloons.png';
 import pengu from '../img/pengu_happy.png';
 import crownicon from '../img/crown.png';
 import loadingcircle from '../img/loading_circle.png';
@@ -38,8 +37,9 @@ function CreateGame(props) {
         </div>
       </div>
       <div className="background">
-        {/* <img src={balloonsPic} alt="balloons bg" className="balloons-bg" /> */}
-        <img src={loadingcircle} alt="loading" className="big-loading" />
+        <div className="loading-circle-div">
+          <img src={loadingcircle} alt="loading" className="big-loading" />
+        </div>
       </div>
     </div>
   );
