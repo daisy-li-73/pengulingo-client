@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Ensure body height is at least the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Allow positioning relative to the body */
+    min-height: 100vh;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+}
+
+.image-container {
+    position: relative;
+    width: 50%;
+    /* Adjust as needed */
+    height: auto;
+}
+
+.pengu {
+    max-width: 100%;
+    height: auto;
+    position: fixed;
+    top: 7%;
+    left: 4%;
+    transform: scale(0.7);
+    /* Center and scale the image */
+}
+
+@keyframes scaleInOut {
+    0% {
+        transform: scale(1) translate(-20px, -30px);
+    }
+
+    50% {
+        transform: scale(1) translate(-10px, 10px);
+    }
+
+    100% {
+        transform: scale(1) translate(10px, -10px);
+    }
+}
+
+.balloon-green {
+    position: fixed;
+    transform: scale(0.7);
+    top: 30%;
+    left: 7%;
+    animation: scaleInOut 2s infinite alternate;
+    /* Adjust duration as needed */
+}
+
+.balloon-red {
+    position: fixed;
+    transform: scale(0.7);
+    top: 55%;
+    right: 57%;
+    animation: scaleInOut 2.2s infinite alternate;
+    /* Adjust duration as needed */
+}
+
+.balloon-yellow {
+    position: fixed;
+    transform: scale(0.7);
+    top: 65%;
+    right: 80%;
+    z-index: 1;
+    animation: scaleInOut 4s infinite alternate;
+    /* Adjust duration as needed */
+}
+
+.balloon-pink {
+    position: fixed;
+    transform: scale(0.7);
+    top: 25%;
+    right: 62%;
+    animation: scaleInOut 3s infinite alternate;
+    /* Adjust duration as needed */
+}
+
+.globe-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    /* Hide any overflow */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg); /* Start rotation from 0 degrees */
+    }
+    to {
+        transform: rotate(360deg); /* End rotation at 360 degrees */
+    }
+}
+
+.globe-container img {
+    transform-origin: center;
+    margin-left: 37%;
+    margin-bottom: -51%;
+    animation: spin 60s linear infinite;
+}
+
+.join-game {
+    position: fixed;
+    top: 55%;
+    /* Center vertically */
+    right: 0;
+    /* Attach to the right edge of the screen */
+    transform: translateY(-50%);
+    /* Center vertically */
+    z-index: 1;
+    /* Ensure the container is in front of other elements */
+    width: 300px;
+    /* Adjust as needed */
+    height: auto;
+    /* Ensures aspect ratio is maintained */
+}
+
+.join-game img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    /* Ensure the image fits within the container */
+    height: auto;
+    /* Ensures aspect ratio is maintained */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for opacity */
+    z-index: 2;
+}
+
+.join-game .join-game-img {
+    opacity: 1;
+}
+
+.join-game .join-game-hover {
+    opacity: 0;
+    /* Initially hidden */
+}
+
+.join-game:hover .join-game-img {
+    opacity: 0;
+    /* Hide normal image on hover */
+}
+
+.join-game:hover .join-game-hover {
+    opacity: 1;
+    /* Show hover image on hover */
+}
+
+.host-game {
+    position: fixed;
+    top: 40%;
+    /* Center vertically */
+    right: 0;
+    /* Attach to the right edge of the screen */
+    transform: translateY(-50%);
+    /* Center vertically */
+    z-index: 1;
+    /* Ensure the container is in front of other elements */
+    width: 300px;
+    /* Adjust as needed */
+    height: auto;
+    /* Ensures aspect ratio is maintained */
+}
+
+.host-game img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    /* Ensure the image fits within the container */
+    height: auto;
+    /* Ensures aspect ratio is maintained */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for opacity */
+    z-index: 2;
+}
+
+.host-game .host-game-img {
+    opacity: 1;
+}
+
+.host-game .host-game-hover {
+    opacity: 0;
+    /* Initially hidden */
+}
+
+.host-game:hover .host-game-img {
+    opacity: 0;
+    /* Hide normal image on hover */
+}
+
+.host-game:hover .host-game-hover {
+    opacity: 1;
+    /* Show hover image on hover */
+}
+
+.header-container {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0%;
+    z-index: 4;
+    border-bottom: 2px solid lightgray;
+}
+
+.logo-container {
+    position: fixed;
+    left: 3%;
+    top: 4%;
+    transform: scale(0.8);
+}
+
+.log-in-container {
+    position: fixed;
+    right: 3%;
+    top: 5.5%;
+    transform: scale(0.8);
+}
+
+.text {
+    position: fixed;
+    transform: scale(0.65);
+    left: 35%;
+    top: 20%;
+}
+
+.language-selector {
+    position: fixed;
+    z-index: 0;
+    bottom: -2%;
+    left: -1%;
+    transform: scale(0.65);
+    display: flex;
+    gap: 75px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: 2px solid lightgray;
+}
+
+.language-selector::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    /* Adjust the value to move the border down from the top */
+    left: 0;
+    height: 50px;
+    /* Adjust the height to control the length of the left border */
+    width: 2px;
+    /* Border thickness */
+    background-color: lightgray;
+    /* Border color */
+}
+
+.language-selector::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    /* Adjust the value to move the border down from the top */
+    right: 0;
+    height: 50px;
+    /* Adjust the height to control the length of the left border */
+    width: 2px;
+    /* Border thickness */
+    background-color: lightgray;
+    /* Border color */
+}
+
+.language-selector button.selected {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.8));
+    /* Increase shadow for the selected button */
+}
