@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import PageTopBar from './PageTopBar';
 import pengu from '../img/pengu_happy.png';
 import crownicon from '../img/crown.png';
 import loadingcircle from '../img/loading_circle.png';
@@ -48,19 +49,16 @@ function CreateGame(props) {
   const handleNameInput = (e) => {
     if (e.target.value.length >= 3) {
       setLoading(false);
+      e.target.classList.add('not-empty');
     } else {
+      e.target.classList.remove('not-empty');
       setLoading(true);
       setPlayerName(e.target.value);
     }
   };
   return (
     <div className="create-game">
-      <div className="invis-top-bar">
-        <NavLink to="/">
-          <p className="pengulingo-title">pengulingo</p>
-        </NavLink>
-      </div>
-      <div className="top-bar" />
+      <PageTopBar />
       <div className="foreground">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         <img src={crownicon} alt="crown" className="little-icon" />
