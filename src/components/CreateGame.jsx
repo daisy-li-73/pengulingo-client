@@ -1,21 +1,45 @@
 import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import pengu from '../img/pengu_happy.png';
 import crownicon from '../img/crown.png';
 import loadingcircle from '../img/loading_circle.png';
 import smallloadingicon from '../img/smallloadingicon.png';
+import loadingbuttonbg from '../img/loadingbuttonbg.png';
+import backbutton from '../img/backbutton.png';
+import createbuttonbg from '../img/createbuttonbg.png';
 
 function CreateGame(props) {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  // const [playerName, setPlayerName] = useState();
+  const [setPlayerName] = useState();
+  const onCreateGameClick = () => {
+    // do something
+  };
   const submitButton = () => {
     return (
       <div>
         {loading ? (
-          <button type="button" className="loadingbutton">
-            <img src={smallloadingicon} alt="small loading icon" />
-          </button>
+          <div className="loading-icon-image">
+            <img
+              src={smallloadingicon}
+              className="loading-icon-image-icon"
+              alt="small loading icon"
+            />
+            <img
+              src={loadingbuttonbg}
+              className="loading-icon-image-bg"
+              alt="small loading icon"
+            />
+          </div>
         ) : (
-          <button type="button" className="submitbutton">
-            Create!
+          <button
+            type="button"
+            className="createbutton"
+            onClick={onCreateGameClick}
+          >
+            <p className="create-button-text">Create!</p>
+            <img src={createbuttonbg} alt="create button bg" />
           </button>
         )}
       </div>
@@ -26,13 +50,17 @@ function CreateGame(props) {
       setLoading(false);
     } else {
       setLoading(true);
+      setPlayerName(e.target.value);
     }
   };
   return (
     <div className="create-game">
-      <div className="top-bar">
-        <p>pengulingo</p>
+      <div className="invis-top-bar">
+        <NavLink to="/">
+          <p className="pengulingo-title">pengulingo</p>
+        </NavLink>
       </div>
+      <div className="top-bar" />
       <div className="foreground">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         <img src={crownicon} alt="crown" className="little-icon" />
@@ -43,8 +71,14 @@ function CreateGame(props) {
           onInput={handleNameInput}
         />
         <div className="buttons-div">
-          <button type="button" className="back-button">
-            back
+          <button
+            type="button"
+            className="back-button"
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            <img src={backbutton} alt="back loading icon" />
           </button>
           {submitButton()}
         </div>
