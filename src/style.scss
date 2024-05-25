@@ -127,25 +127,6 @@ html {
 
 // LANDING_PAGE
 
-.header-container body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  min-height: 100vh;
-}
-
-.header-container button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-}
-
 .image-container {
   position: relative;
   width: 50%;
@@ -401,7 +382,7 @@ html {
 }
 
 .pengulingo-title {
-  position: relative;
+  position: fixed;
   font-weight: 600;
   font-size: 20px;
   color: #11ADDE;
