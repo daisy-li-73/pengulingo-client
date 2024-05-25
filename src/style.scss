@@ -1,16 +1,10 @@
+// OVERALL_STYLING
+
 body,
 html {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(to bottom, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  font-family: "Poppins", sans-serif;
   height: 100%;
-}
-
-.logo {
-  background-image: url("img/stockimage.png");
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: contain;
+  margin: 0;
 }
 
 :root {
@@ -19,4 +13,476 @@ html {
 
 .active {
   color: pink;
+}
+
+// FONT_STYLING
+
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+// LANDING_PAGE
+
+.header-container body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.header-container button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.image-container {
+  position: relative;
+  width: 50%;
+  height: auto;
+}
+
+.pengu {
+  max-width: 100%;
+  height: auto;
+  position: fixed;
+  top: 7%;
+  left: 4%;
+  transform: scale(0.7);
+}
+
+@keyframes scaleInOut {
+  0% {
+      transform: scale(1) translate(-20px, -30px);
+  }
+
+  50% {
+      transform: scale(1) translate(-10px, 10px);
+  }
+
+  100% {
+      transform: scale(1) translate(10px, -10px);
+  }
+}
+
+.balloon-green {
+  position: fixed;
+  transform: scale(0.7);
+  top: 30%;
+  left: 7%;
+  animation: scaleInOut 2s infinite alternate;
+}
+
+.balloon-red {
+  position: fixed;
+  transform: scale(0.7);
+  top: 55%;
+  right: 57%;
+  animation: scaleInOut 2.2s infinite alternate;
+}
+
+.balloon-yellow {
+  position: fixed;
+  transform: scale(0.7);
+  top: 65%;
+  right: 80%;
+  z-index: 1;
+  animation: scaleInOut 4s infinite alternate;
+}
+
+.balloon-pink {
+  position: fixed;
+  transform: scale(0.7);
+  top: 25%;
+  right: 62%;
+  animation: scaleInOut 3s infinite alternate;
+}
+
+.globe-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.globe-container img {
+  transform-origin: center;
+  margin-left: 37%;
+  margin-bottom: -51%;
+  animation: spin 60s linear infinite;
+}
+
+.join-game {
+  position: fixed;
+  top: 55%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 300px;
+  height: auto;
+}
+
+.join-game img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.join-game .join-game-img {
+  opacity: 1;
+}
+
+.join-game .join-game-hover {
+  opacity: 0;
+}
+
+.join-game:hover .join-game-img {
+  opacity: 0;
+}
+
+.join-game:hover .join-game-hover {
+  opacity: 1;
+}
+
+.host-game {
+  position: fixed;
+  top: 40%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 300px;
+  height: auto;
+}
+
+.host-game img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.host-game .host-game-img {
+  opacity: 1;
+}
+
+.host-game .host-game-hover {
+  opacity: 0;
+}
+
+.host-game:hover .host-game-img {
+  opacity: 0;
+}
+
+.host-game:hover .host-game-hover {
+  opacity: 1;
+}
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  top: 0%;
+  z-index: 4;
+  border-bottom: 2px solid lightgray;
+}
+
+.logo-container {
+  position: fixed;
+  left: 3%;
+  top: 4%;
+  transform: scale(0.8);
+}
+
+.log-in-container {
+  position: fixed;
+  right: 3%;
+  top: 5.5%;
+  transform: scale(0.8);
+}
+
+.text {
+  position: fixed;
+  transform: scale(0.65);
+  left: 35%;
+  top: 20%;
+}
+
+.language-selector {
+  position: fixed;
+  z-index: 0;
+  bottom: -2%;
+  left: -1%;
+  transform: scale(0.65);
+  display: flex;
+  gap: 75px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: 2px solid lightgray;
+}
+
+.language-selector::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 50px;
+  width: 2px;
+  background-color: lightgray;
+}
+
+.language-selector::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 0;
+  height: 50px;
+  width: 2px;
+  background-color: lightgray;
+}
+
+.language-selector button.selected {
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.8));
+}
+
+// CREATEGAME_PAGE
+
+.create-game {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url("img/admin_color_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.top-bar {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar p {
+  font-weight: 600;
+  font-size: 20px;
+  color: #11ADDE;
+  padding-left: 30px;
+}
+
+.foreground {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding-top: 66px;
+}
+
+.balloons-bg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.background {
+  display: flex;
+  width: 100vw;
+  z-index: 0;
+  background-image: url("img/balloons.png");
+  background-size: 100%;
+  background-repeat: repeat-y;
+  justify-content: center;
+  align-items: center;
+}
+
+.pengu-logo {
+  width: 17%;
+}
+
+.little-icon {
+  width: 40px;
+  height: 24px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-circle-div {
+  display: flex;
+  padding-top: 66px;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-loading {
+  position: absolute;
+  width: 40%;
+  animation: rotate 20s linear infinite;
+}
+
+.buttons-div {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.enter-name {
+  width: 290px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 50px;
+  border: 3px solid #68A1BE;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+}
+
+.enter-name::placeholder {
+  color: #CCCCCC;
+  text-align: center;
 }
