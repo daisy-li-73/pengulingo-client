@@ -49,7 +49,9 @@ function CreateGame(props) {
   const handleNameInput = (e) => {
     if (e.target.value.length >= 3) {
       setLoading(false);
+      e.target.classList.add('not-empty');
     } else {
+      e.target.classList.remove('not-empty');
       setLoading(true);
       setPlayerName(e.target.value);
     }

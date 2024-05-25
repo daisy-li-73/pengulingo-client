@@ -512,7 +512,7 @@ html {
   height: 45px;
   padding: 10px;
   border-radius: 50px;
-  border: 3px solid #68A1BE;
+  border: 3px solid #CCCCCC;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 28px;
@@ -525,6 +525,14 @@ html {
   text-align: center;
 }
 
+.enter-name:focus {
+  border-color: #68A1BE;
+  outline: none;
+}
+
+input.enter-name.not-empty {
+  border-color: #68A1BE;
+}
 
 // JOINGAME_PAGE
 
