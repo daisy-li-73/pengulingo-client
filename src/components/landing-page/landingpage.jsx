@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PageTopBar from '../PageTopBar';
 
 function LoadingScreen() {
   const [language, setLanguage] = useState('French');
@@ -12,12 +13,7 @@ function LoadingScreen() {
 
   return (
     <div>
-      <div className="invis-top-bar">
-        <NavLink to="/">
-          <p className="pengulingo-title">pengulingo</p>
-        </NavLink>
-      </div>
-      <div className="top-bar" />
+      <PageTopBar />
       <div className="image-container">
         <div className="pengu-container">
           <img src="src/components/landing-page/images/pengu-loading-screen.png" className="pengu" />
