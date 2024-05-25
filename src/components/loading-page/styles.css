@@ -1,0 +1,79 @@
+/* Keyframe animations for popping effect */
+@keyframes popAnimation {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.5); }
+}
+
+/* Ensure the body covers the full viewport */
+body {
+    background-color: #2DC2F2;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Hide any content overflowing the viewport */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pengu {
+    position: relative;
+}
+
+.pengu-img {
+    height: auto;
+    transform: translate(0%, -23%) scale(0.2);
+    /* Center and scale the image */
+}
+
+.text {
+    color: #E5E5E5;
+    position: absolute;
+    top: 95%;
+    left: 45%;
+}
+
+.balloons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.75);
+}
+
+.balloons > div {
+    position: absolute;
+    transform-origin: center;
+}
+
+/* Define positions for each balloon */
+.black { top: calc(50% + 120px); left: calc(50% - 230px); }
+.blue { top: calc(50% - 250px); left: calc(50% - 250px); }
+.green { top: calc(50% - 70px); left: calc(50% + 220px); }
+.pink { top: calc(50% + 120px); left: calc(50% + 130px); }
+.red { top: calc(50% - 330px); left: calc(50% - 50px); }
+.white { top: calc(50% + 180px); left: calc(50% - 50px); }
+.yellow { top: calc(50% - 250px); left: calc(50% + 130px); }
+.yellow2 { top: calc(50% - 65px); left: calc(50% - 320px); }
+
+/* Ensure only one image is visible at a time */
+.balloons img.popped {
+    opacity: 0;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.balloons img.unpopped {
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Apply animation classes if needed */
+.animate-pop {
+    animation: popAnimation 0.75s ease-in-out forwards;
+}

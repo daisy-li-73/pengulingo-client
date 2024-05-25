@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PageTopBar from '../PageTopBar';
+import './styles2.css';
 
-function LoadingScreen() {
+function LandingScreen() {
   const [language, setLanguage] = useState('French');
 
   const handleLanguageChange = (selectedLanguage) => {
@@ -49,4 +50,4 @@ function LoadingScreen() {
   );
 }
 
-export default LoadingScreen;
+export default LandingScreen;
