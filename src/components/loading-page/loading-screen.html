@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="pengu">
+        <img src="images-loading/pengu.png" class="pengu-img">
+    </div>
+    <div class="balloons">
+        <div class="black balloon">
+            <img src="images-loading/black-unpopped.png" class="black-unpopped unpopped">
+            <img src="images-loading/black-popped.png" class="black-popped popped">
+        </div>
+        <div class="blue balloon">
+            <img src="images-loading/blue-unpopped.png" class="blue-unpopped unpopped">
+            <img src="images-loading/blue-popped.png" class="blue-popped popped">
+        </div>
+        <div class="green balloon">
+            <img src="images-loading/green-unpopped.png" class="green-unpopped unpopped">
+            <img src="images-loading/green-popped.png" class="green-popped popped">
+        </div>
+        <div class="pink balloon">
+            <img src="images-loading/pink-unpopped.png" class="pink-unpopped unpopped">
+            <img src="images-loading/pink-popped.png" class="pink-popped popped">
+        </div>
+        <div class="red balloon">
+            <img src="images-loading/red-unpopped.png" class="red-unpopped unpopped">
+            <img src="images-loading/red-popped.png" class="red-popped popped">
+        </div>
+        <div class="white balloon">
+            <img src="images-loading/white-unpopped.png" class="white-unpopped unpopped">
+            <img src="images-loading/white-popped.png" class="white-popped popped">
+        </div>
+        <div class="yellow balloon">
+            <img src="images-loading/yellow-unpopped.png" class="yellow-unpopped unpopped">
+            <img src="images-loading/yellow-popped.png" class="yellow-popped popped">
+        </div>
+        <div class="yellow2 balloon">
+            <img src="images-loading/yellow2-unpopped.png" class="yellow2-unpopped unpopped">
+            <img src="images-loading/yellow2-popped.png" class="yellow2-popped popped">
+        </div>
+    </div>
+    <div class="text">
+        The Anticipation!
+    </div>
+
+    <script>
+        const balloonPairs = document.querySelectorAll('.balloon');
+
+        // Function to animate balloons
+        function animateBalloons(index = 0) {
+            if (index < balloonPairs.length) {
+                const unpoppedImg = balloonPairs[index].querySelector('.unpopped');
+                const poppedImg = balloonPairs[index].querySelector('.popped');
+
+                // Start pop animation on unpopped image
+                unpoppedImg.style.opacity = '1';
+                poppedImg.style.opacity = '0';
+                unpoppedImg.classList.add('animate-pop');
+
+                setTimeout(() => {
+                    unpoppedImg.classList.remove('animate-pop');
+                    unpoppedImg.style.opacity = '0';
+                    poppedImg.style.opacity = '1';
+                }, 750); // Adjust delay based on animation duration
+
+                setTimeout(() => {
+                    // Move to the next balloon
+                    animateBalloons(index + 1);
+                }, 1000); // Adjust delay based on animation duration
+            } else {
+                // Restore the balloons after a delay
+                setTimeout(() => {
+                    balloonPairs.forEach(balloon => {
+                        const unpoppedImg = balloon.querySelector('.unpopped');
+                        const poppedImg = balloon.querySelector('.popped');
+                        unpoppedImg.style.opacity = '1';
+                        poppedImg.style.opacity = '0';
+                    }, 500);
+
+                    // Restart the animation after restoring
+                    setTimeout(() => animateBalloons(0), 500); // Adjust delay as needed
+                }, 1000); // Adjust delay as needed
+            }
+        }
+
+        // Call the function to start the animation
+        animateBalloons();
+    </script>
+</body>
+
+</html>
