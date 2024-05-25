@@ -12,14 +12,12 @@ function LoadingScreen() {
 
   return (
     <div>
-      <div className="header-container">
-        <div className="logo-container">
-          <NavLink to="/"><img src="src/components/landing-page/images/pengulingo.png" alt="logo" /></NavLink>
-        </div>
-        <div className="log-in-container">
-          <NavLink to="/"><img src="src/components/landing-page/images/log-in.png" alt="log-in" /></NavLink>
-        </div>
+      <div className="invis-top-bar">
+        <NavLink to="/">
+          <p className="pengulingo-title">pengulingo</p>
+        </NavLink>
       </div>
+      <div className="top-bar" />
       <div className="image-container">
         <div className="pengu-container">
           <img src="src/components/landing-page/images/pengu-loading-screen.png" className="pengu" />
