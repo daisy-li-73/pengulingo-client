@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import CreateGame from './CreateGame';
 import LandingScreen from './landing-page/landingpage';
+import JoinGame from './JoinGame';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingScreen />} />
           <Route path="/creategame" element={<CreateGame />} />
-          <Route path="/joingame" element={<Test />} />
+          <Route path="/joingame" element={<JoinGame />} />
           <Route path="/joingame/:roomID" element={<Test />} />
           <Route path="/room/:roomID" element={<Test />} />
           <Route path="/room/:roomID/:gameID" element={<Test />} />
