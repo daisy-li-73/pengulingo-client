@@ -73,7 +73,7 @@ function JoinGame(props) {
           <button
             type="button"
             className="createbutton"
-            // onClick={onCreateGameClick} // send to db
+            // onClick={onCreateGameClick} // send to db, if can't find code, then send toast error and reset code field
           >
             <p className="create-button-text">Join!</p>
             <img src={createbuttonbg} alt="create button bg" />
