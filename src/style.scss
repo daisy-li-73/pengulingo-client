@@ -474,7 +474,7 @@ html {
 
 .buttons-div {
   display: flex;
-  width: 100%;
+  width: 98%;
   height: 100px;
   flex-direction: row;
   justify-content: space-between;
@@ -495,6 +495,7 @@ html {
   font-size: 32px;
   font-family: 'Poppins', serif;
   color: white;
+  padding: 0;
 }
 
 .createbutton:hover {
@@ -536,4 +537,22 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+}
+
+.join-game-page .enter-name {
+  border-color: #CCCCCC;
+}
+
+.join-game-page .enter-name:focus {
+  border-color: #74BE68;
+  outline: none;
+}
+
+.join-game-page input.enter-name.not-empty {
+  border-color: #74BE68;
+}
+
+.join-game-page button:hover {
+  color: #b8ffad;
+  transition-duration: 0.3s;
 }
