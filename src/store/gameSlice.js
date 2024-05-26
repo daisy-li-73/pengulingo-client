@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function createGameSlice(set, get) {
-  // const ROOT_URL = 'https://platform-api-daisy-li-73.onrender.com/api';
+  const ROOT_URL = 'https://pengulingo-api.onrender.com/api';
   // const ROOT_URL = 'https://platform.cs52.me/api';
 
   return {
