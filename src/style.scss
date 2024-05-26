@@ -367,8 +367,9 @@ html {
   overflow: hidden;
 }
 
-.top-bar {
-  position: fixed;
+.page-top-bar {
+  position: absolute;
+  left: 0;
   top: 0;
   width: 100%;
   height: 70px;
@@ -387,11 +388,12 @@ html {
   font-size: 20px;
   color: #11ADDE;
   padding-left: 30px;
-  z-index: 10;
+  cursor: pointer;
 }
 
 .invis-top-bar a {
   text-decoration: none;
+  z-index: 10;
 }
 
 .foreground {
@@ -453,6 +455,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .back-button {
@@ -470,12 +473,13 @@ html {
 .loading-icon-image-bg {
   position: relative;
   z-index: 0;
+  height: 100%;
 }
 
 .buttons-div {
   display: flex;
   width: 98%;
-  height: 100px;
+  height: 12%;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 2%;

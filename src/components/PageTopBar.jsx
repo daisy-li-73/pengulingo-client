@@ -5,8 +5,8 @@ function PageTopBar() {
   return (
     <div className="page-top-bar">
       <div className="invis-top-bar">
-        <NavLink to="/">
-          <p className="pengulingo-title">pengulingo</p>
+        <NavLink className="pengulingo-title" to="/">
+          <p>pengulingo</p>
         </NavLink>
       </div>
       <div className="top-bar" />
