@@ -1,10 +1,10 @@
 // OVERALL_STYLING
-
 body,
 html {
   font-family: "Poppins", sans-serif;
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 :root {
@@ -126,232 +126,243 @@ html {
 }
 
 // LANDING_PAGE
+.landing-page {
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+  }
 
-.image-container {
-  position: relative;
-  width: 50%;
-  height: auto;
-}
+  .image-container {
+    position: relative;
+    width: 50%;
+    height: auto;
+  }
 
-.pengu {
-  max-width: 100%;
-  height: auto;
-  position: fixed;
-  top: 7%;
-  left: 4%;
-  transform: scale(0.7);
-}
+  .pengu {
+    max-width: 100%;
+    height: auto;
+    position: fixed;
+    top: 7%;
+    left: 4%;
+    transform: scale(0.7);
+  }
 
-@keyframes scaleInOut {
-  0% {
+  @keyframes scaleInOut {
+    0% {
       transform: scale(1) translate(-20px, -30px);
-  }
+    }
 
-  50% {
+    50% {
       transform: scale(1) translate(-10px, 10px);
-  }
+    }
 
-  100% {
+    100% {
       transform: scale(1) translate(10px, -10px);
+    }
   }
-}
 
-.balloon-green {
-  position: fixed;
-  transform: scale(0.7);
-  top: 30%;
-  left: 7%;
-  animation: scaleInOut 2s infinite alternate;
-}
+  .balloon-green {
+    position: fixed;
+    transform: scale(0.7);
+    top: 30%;
+    left: 7%;
+    animation: scaleInOut 2s infinite alternate;
+  }
 
-.balloon-red {
-  position: fixed;
-  transform: scale(0.7);
-  top: 55%;
-  right: 57%;
-  animation: scaleInOut 2.2s infinite alternate;
-}
+  .balloon-red {
+    position: fixed;
+    transform: scale(0.7);
+    top: 55%;
+    right: 57%;
+    animation: scaleInOut 2.2s infinite alternate;
+  }
 
-.balloon-yellow {
-  position: fixed;
-  transform: scale(0.7);
-  top: 65%;
-  right: 80%;
-  z-index: 1;
-  animation: scaleInOut 4s infinite alternate;
-}
+  .balloon-yellow {
+    position: fixed;
+    transform: scale(0.7);
+    top: 65%;
+    right: 80%;
+    z-index: 1;
+    animation: scaleInOut 4s infinite alternate;
+  }
 
-.balloon-pink {
-  position: fixed;
-  transform: scale(0.7);
-  top: 25%;
-  right: 62%;
-  animation: scaleInOut 3s infinite alternate;
-}
+  .balloon-pink {
+    position: fixed;
+    transform: scale(0.7);
+    top: 25%;
+    right: 62%;
+    animation: scaleInOut 3s infinite alternate;
+  }
 
-.globe-container {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
+  .globe-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
 
-@keyframes spin {
-  from {
+  @keyframes spin {
+    from {
       transform: rotate(0deg);
-  }
-  to {
+    }
+
+    to {
       transform: rotate(360deg);
+    }
   }
-}
 
-.globe-container img {
-  transform-origin: center;
-  margin-left: 37%;
-  margin-bottom: -51%;
-  animation: spin 60s linear infinite;
-}
+  .globe-container img {
+    transform-origin: center;
+    margin-left: 37%;
+    margin-bottom: -51%;
+    animation: spin 60s linear infinite;
+  }
 
-.join-game {
-  position: fixed;
-  top: 55%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 1;
-  width: 300px;
-  height: auto;
-}
+  .join-game {
+    position: fixed;
+    top: 55%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 300px;
+    height: auto;
+  }
 
-.join-game img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
+  .join-game img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
 
-.join-game .join-game-img {
-  opacity: 1;
-}
+  .join-game .join-game-img {
+    opacity: 1;
+  }
 
-.join-game .join-game-hover {
-  opacity: 0;
-}
+  .join-game .join-game-hover {
+    opacity: 0;
+  }
 
-.join-game:hover .join-game-img {
-  opacity: 0;
-}
+  .join-game:hover .join-game-img {
+    opacity: 0;
+  }
 
-.join-game:hover .join-game-hover {
-  opacity: 1;
-}
+  .join-game:hover .join-game-hover {
+    opacity: 1;
+  }
 
-.host-game {
-  position: fixed;
-  top: 40%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 1;
-  width: 300px;
-  height: auto;
-}
+  .host-game {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 300px;
+    height: auto;
+  }
 
-.host-game img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
+  .host-game img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
 
-.host-game .host-game-img {
-  opacity: 1;
-}
+  .host-game .host-game-img {
+    opacity: 1;
+  }
 
-.host-game .host-game-hover {
-  opacity: 0;
-}
+  .host-game .host-game-hover {
+    opacity: 0;
+  }
 
-.host-game:hover .host-game-img {
-  opacity: 0;
-}
+  .host-game:hover .host-game-img {
+    opacity: 0;
+  }
 
-.host-game:hover .host-game-hover {
-  opacity: 1;
-}
+  .host-game:hover .host-game-hover {
+    opacity: 1;
+  }
 
-.header-container {
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  top: 0%;
-  z-index: 4;
-  border-bottom: 2px solid lightgray;
-}
+  .header-container {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0%;
+    z-index: 4;
+    border-bottom: 2px solid lightgray;
+  }
 
-.logo-container {
-  position: fixed;
-  left: 3%;
-  top: 4%;
-  transform: scale(0.8);
-}
+  .logo-container {
+    position: fixed;
+    left: 3%;
+    top: 4%;
+    transform: scale(0.8);
+  }
 
-.log-in-container {
-  position: fixed;
-  right: 3%;
-  top: 5.5%;
-  transform: scale(0.8);
-}
+  .log-in-container {
+    position: fixed;
+    right: 3%;
+    top: 5.5%;
+    transform: scale(0.8);
+  }
 
-.text {
-  position: fixed;
-  transform: scale(0.65);
-  left: 35%;
-  top: 20%;
-}
+  .text {
+    position: fixed;
+    transform: scale(0.65);
+    left: 35%;
+    top: 20%;
+  }
 
-.language-selector {
-  position: fixed;
-  z-index: 0;
-  bottom: -2%;
-  left: -1%;
-  transform: scale(0.65);
-  display: flex;
-  gap: 75px;
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-top: 2px solid lightgray;
-}
+  .language-selector {
+    position: fixed;
+    z-index: 0;
+    bottom: -2%;
+    left: -1%;
+    transform: scale(0.65);
+    display: flex;
+    gap: 75px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: 2px solid lightgray;
+  }
 
-.language-selector::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 0;
-  height: 50px;
-  width: 2px;
-  background-color: lightgray;
-}
+  .language-selector::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 50px;
+    width: 2px;
+    background-color: lightgray;
+  }
 
-.language-selector::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 0;
-  height: 50px;
-  width: 2px;
-  background-color: lightgray;
-}
+  .language-selector::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 0;
+    height: 50px;
+    width: 2px;
+    background-color: lightgray;
+  }
 
-.language-selector button.selected {
-  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.8));
+  .language-selector button.selected {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.8));
+  }
 }
 
 // CREATEGAME_PAGE
@@ -374,6 +385,7 @@ html {
   height: 70px;
   background-color: white;
   box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: 5;
 }
 
 .invis-top-bar {
@@ -431,6 +443,7 @@ html {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -563,4 +576,325 @@ input.enter-name.not-empty {
 .join-game-page button:hover {
   color: #b8ffad;
   transition-duration: 0.3s;
+}
+
+.lets-go-class {
+  background-color: black;
+
+  .container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lights {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    z-index: 2;
+    /* Ensure it is above the lights */
+  }
+
+  .lights img {
+    width: 3vw;
+    height: 150vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    object-fit: cover;
+    transform-origin: bottom center;
+  }
+
+  .lights .P1Light,
+  .lights .P2Light {
+    animation: rotateLights1 5s infinite;
+    /* Rotate animation with alternate direction */
+  }
+
+  .lights .P3Light,
+  .lights .P4Light {
+    animation: rotateLights2 5s infinite;
+    /* Rotate animation with alternate direction */
+  }
+
+  .players img {
+    margin-left: 3.75vw;
+    margin-right: 3.75vw;
+    height: 100px;
+    /* Adjust height as needed */
+  }
+
+  @keyframes rotateLights1 {
+    0% {
+      transform: rotate(-40deg);
+    }
+
+    50% {
+      transform: rotate(40deg);
+    }
+
+    100% {
+      transform: rotate(-40deg);
+    }
+  }
+
+  @keyframes rotateLights2 {
+    0% {
+      transform: rotate(40deg);
+    }
+
+    50% {
+      transform: rotate(-40deg);
+    }
+
+    100% {
+      transform: rotate(40deg);
+    }
+  }
+
+  .pengu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+
+  .pengu-img {
+    width: 175px;
+    height: auto;
+  }
+
+  .ellipse {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 125%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .lets-go-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+
+  .lets-go-img {
+    width: 400px;
+    height: auto;
+  }
+
+  .sparkles {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  .red-sparkles,
+  .blue-sparkles,
+  .yellow-sparkles,
+  .green-sparkles {
+    position: relative;
+    width: 100px;
+    /* Adjust size as needed */
+    height: 100px;
+    /* Adjust size as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .red-sparkles {
+    top: 45%;
+    /* Adjust position as needed */
+  }
+
+  .blue-sparkles {
+    top: 20%;
+  }
+
+  .yellow-sparkles {
+    top: 20%;
+  }
+
+  .green-sparkles {
+    top: 45%;
+    /* Adjust position as needed */
+  }
+
+  .red-sparkles img,
+  .blue-sparkles img,
+  .yellow-sparkles img,
+  .green-sparkles img {
+    position: absolute;
+    transform: scale(0.75);
+  }
+
+  .red-sparkles .star-6,
+  .blue-sparkles .star-9,
+  .yellow-sparkles .star-12,
+  .green-sparkles .star-15 {
+    top: -20%;
+    left: -15%;
+    transform: translateX(-50%);
+  }
+
+  .red-sparkles .star-7,
+  .blue-sparkles .star-10,
+  .yellow-sparkles .star-13,
+  .green-sparkles .star-16 {
+    bottom: -50%;
+    left: 20;
+  }
+
+  .red-sparkles .star-8,
+  .blue-sparkles .star-11,
+  .yellow-sparkles .star-14,
+  .green-sparkles .star-17 {
+    bottom: -10;
+    right: -10%;
+  }
+}
+
+.loading-screen {
+  @keyframes popAnimation {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1.5);
+    }
+  }
+
+  /* Ensure the body covers the full viewport */
+  background-color: #2DC2F2;
+  margin: 0;
+  font-family: Arial,
+  sans-serif;
+  overflow: hidden;
+  /* Hide any content overflowing the viewport */
+  min-height: 100vh;
+  /* Ensure body takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .pengu {
+    position: relative;
+  }
+
+  .pengu-img {
+    height: auto;
+    transform: translate(0%, -23%) scale(0.2);
+    /* Center and scale the image */
+  }
+
+  .text {
+    color: #E5E5E5;
+    position: absolute;
+    top: 95%;
+    left: 45%;
+  }
+
+  .balloons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+
+  .balloons>div {
+    position: absolute;
+    transform-origin: center;
+  }
+
+  /* Define positions for each balloon */
+  .black {
+    top: calc(50% + 120px);
+    left: calc(50% - 230px);
+  }
+
+  .blue {
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+  }
+
+  .green {
+    top: calc(50% - 70px);
+    left: calc(50% + 220px);
+  }
+
+  .pink {
+    top: calc(50% + 120px);
+    left: calc(50% + 130px);
+  }
+
+  .red {
+    top: calc(50% - 330px);
+    left: calc(50% - 50px);
+  }
+
+  .white {
+    top: calc(50% + 180px);
+    left: calc(50% - 50px);
+  }
+
+  .yellow {
+    top: calc(50% - 250px);
+    left: calc(50% + 130px);
+  }
+
+  .yellow2 {
+    top: calc(50% - 65px);
+    left: calc(50% - 320px);
+  }
+
+  /* Ensure only one image is visible at a time */
+  .balloons img.popped {
+    opacity: 0;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .balloons img.unpopped {
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Apply animation classes if needed */
+  .animate-pop {
+    animation: popAnimation 0.75s ease-in-out forwards;
+  }
 }

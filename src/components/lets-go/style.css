@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #000; /* Adjust as needed */
+    position: relative;
+    overflow: hidden; /* Ensure no scrolling */
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.lights {
+    display: flex;
+    justify-content: space-between; /* Distribute lights evenly */
+    align-items: flex-end; /* Align lights at the bottom */
+    position: absolute;
+    bottom: 0;
+    height: 150%; /* Stretch to the full height */
+    z-index: 1; /* Ensure it is underneath the players */
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    z-index: 2; /* Ensure it is above the lights */
+}
+
+.lights img {
+    width: 3vw; /* Adjust width to ensure proper distribution */
+    height: 150vh; /* Stretch lights to the full height of the container */
+    margin-left: 5vw;
+    margin-right: 5vw;   
+    object-fit: cover; /* Ensure images cover the entire height */
+    transform-origin: bottom center; /* Pivot from the bottom */
+}
+
+.lights .P1Light,
+.lights .P2Light {
+    animation: rotateLights1 5s infinite; /* Rotate animation with alternate direction */
+}
+
+.lights .P3Light,
+.lights .P4Light {
+    animation: rotateLights2 5s infinite; /* Rotate animation with alternate direction */
+}
+
+.players img {
+    margin-left: 3.75vw;
+    margin-right: 3.75vw;
+    height: 100px; /* Adjust height as needed */
+}
+
+@keyframes rotateLights1 {
+    0% {
+        transform: rotate(-40deg);
+    }
+    50% {
+        transform: rotate(40deg);
+    }
+    100% {
+        transform: rotate(-40deg);
+    }
+}
+
+@keyframes rotateLights2 {
+    0% {
+        transform: rotate(40deg);
+    }
+    50% {
+        transform: rotate(-40deg);
+    }
+    100% {
+        transform: rotate(40deg);
+    }
+}
+
+.pengu {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    position: absolute; /* Position the container */
+    top: 30%; /* Move the container 50% from the top */
+    left: 50%; /* Move the container 50% from the left */
+    transform: translate(-50%, -50%); /* Adjust to center the container */
+    z-index: 5;
+}
+
+.pengu-img {
+    width: 175px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.circle {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    position: fixed; /* Position the container */
+    top: 0%;
+    height: 100%;
+}
+
+.lets-go {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    position: absolute; /* Position the container */
+    top: 60%; /* Move the container 50% from the top */
+    left: 50%; /* Move the container 50% from the left */
+    transform: translate(-50%, -50%); /* Adjust to center the container */
+    z-index: 5;
+}
+
+.lets-go-img {
+    width: 400px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.sparkles {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.red-sparkles, .blue-sparkles, .yellow-sparkles, .green-sparkles {
+    position: relative;
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-sparkles {
+    top: 35%; /* Adjust position as needed */
+}
+
+.blue-sparkles {
+    top: 12%;
+}
+
+.yellow-sparkles {
+    top: 12%;
+}
+
+.green-sparkles {
+    top: 35%; /* Adjust position as needed */
+}
+
+.red-sparkles img, .blue-sparkles img, .yellow-sparkles img, .green-sparkles img {
+    position: absolute;
+    transform: scale(0.75);
+}
+
+.red-sparkles .star-6, .blue-sparkles .star-9, .yellow-sparkles .star-12, .green-sparkles .star-15 {
+    top: -20%;
+    left: -15%;
+    transform: translateX(-50%);
+}
+
+.red-sparkles .star-7, .blue-sparkles .star-10, .yellow-sparkles .star-13, .green-sparkles .star-16 {
+    bottom: -50%;
+    left: 20;
+}
+
+.red-sparkles .star-8, .blue-sparkles .star-11, .yellow-sparkles .star-14, .green-sparkles .star-17 {
+    bottom: -10;
+    right: -10%;
+}
