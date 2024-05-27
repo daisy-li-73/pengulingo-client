@@ -125,6 +125,219 @@ html {
   font-style: italic;
 }
 
+// CREATEGAME_PAGE
+
+.create-game {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url("img/admin_color_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.invis-top-bar {
+  position: absolute;
+  display: flex;
+}
+
+.pengulingo-title {
+  position: fixed;
+  font-weight: 600;
+  font-size: 20px;
+  color: #11ADDE;
+  padding-left: 30px;
+  z-index: 10;
+}
+
+.invis-top-bar a {
+  text-decoration: none;
+}
+
+.foreground {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding-top: 100px;
+}
+
+.background {
+  display: flex;
+  width: 100vw;
+  z-index: 0;
+  background-image: url("img/balloons.png");
+  background-size: 100%;
+  background-repeat: repeat-y;
+  justify-content: center;
+  align-items: center;
+}
+
+.pengu-logo {
+  width: 17%;
+}
+
+.little-icon {
+  width: 40px;
+  height: 24px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-circle-div {
+  display: flex;
+  padding-top: 66px;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-loading {
+  position: absolute;
+  width: 40%;
+  animation: rotate 20s linear infinite;
+}
+
+.loading-icon-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+}
+
+.loading-icon-image-icon {
+  position: absolute;
+  z-index: 1;
+  animation: rotate 5s linear infinite; // change this animation
+}
+
+.loading-icon-image-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.buttons-div {
+  display: flex;
+  width: 98%;
+  height: 100px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 2%;
+}
+
+.buttons-div button {
+  cursor: pointer;
+}
+
+.createbutton {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 32px;
+  font-family: 'Poppins', serif;
+  color: white;
+  padding: 0;
+}
+
+.createbutton:hover {
+  color: #7ce0ff; // change this hover effect, can't do box shadow directly bc its an image not span
+  transition-duration: 0.3s;
+}
+
+.create-button-text {
+  position: absolute;
+}
+
+.enter-name {
+  width: 290px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 50px;
+  border: 3px solid #CCCCCC;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+}
+
+.enter-name::placeholder {
+  color: #CCCCCC;
+  text-align: center;
+}
+
+.enter-name:focus {
+  border-color: #68A1BE;
+  outline: none;
+}
+
+input.enter-name.not-empty {
+  border-color: #68A1BE;
+}
+
+// JOINGAME_PAGE
+
+.join-game-page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url("img/player_color_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.join-game-page .enter-name {
+  border-color: #CCCCCC;
+}
+
+.join-game-page .enter-name:focus {
+  border-color: #74BE68;
+  outline: none;
+}
+
+.join-game-page input.enter-name.not-empty {
+  border-color: #74BE68;
+}
+
+.join-game-page button:hover {
+  color: #b8ffad;
+  transition-duration: 0.3s;
+}
+
 // LANDING_PAGE
 .landing-page {
   button {
@@ -365,219 +578,7 @@ html {
   }
 }
 
-// CREATEGAME_PAGE
-
-.create-game {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  background-image: url("img/admin_color_bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.top-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 70px;
-  background-color: white;
-  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
-  z-index: 5;
-}
-
-.invis-top-bar {
-  position: absolute;
-  display: flex;
-}
-
-.pengulingo-title {
-  position: fixed;
-  font-weight: 600;
-  font-size: 20px;
-  color: #11ADDE;
-  padding-left: 30px;
-  z-index: 10;
-}
-
-.invis-top-bar a {
-  text-decoration: none;
-}
-
-.foreground {
-  position: absolute;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  padding-top: 100px;
-}
-
-.background {
-  display: flex;
-  width: 100vw;
-  z-index: 0;
-  background-image: url("img/balloons.png");
-  background-size: 100%;
-  background-repeat: repeat-y;
-  justify-content: center;
-  align-items: center;
-}
-
-.pengu-logo {
-  width: 17%;
-}
-
-.little-icon {
-  width: 40px;
-  height: 24px;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-circle-div {
-  display: flex;
-  padding-top: 66px;
-  justify-content: center;
-  align-items: center;
-}
-
-.big-loading {
-  position: absolute;
-  width: 40%;
-  animation: rotate 20s linear infinite;
-}
-
-.loading-icon-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.back-button {
-  background-color: transparent;
-  color: transparent;
-  border: none;
-}
-
-.loading-icon-image-icon {
-  position: absolute;
-  z-index: 1;
-  animation: rotate 5s linear infinite; // change this animation
-}
-
-.loading-icon-image-bg {
-  position: relative;
-  z-index: 0;
-}
-
-.buttons-div {
-  display: flex;
-  width: 98%;
-  height: 100px;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 2%;
-}
-
-.buttons-div button {
-  cursor: pointer;
-}
-
-.createbutton {
-  display: flex;
-  background-color: transparent;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  font-size: 32px;
-  font-family: 'Poppins', serif;
-  color: white;
-  padding: 0;
-}
-
-.createbutton:hover {
-  color: #7ce0ff; // change this hover effect, can't do box shadow directly bc its an image not span
-  transition-duration: 0.3s;
-}
-
-.create-button-text {
-  position: absolute;
-}
-
-.enter-name {
-  width: 290px;
-  height: 45px;
-  padding: 10px;
-  border-radius: 50px;
-  border: 3px solid #CCCCCC;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 28px;
-  text-align: center;
-  color: #333;
-}
-
-.enter-name::placeholder {
-  color: #CCCCCC;
-  text-align: center;
-}
-
-.enter-name:focus {
-  border-color: #68A1BE;
-  outline: none;
-}
-
-input.enter-name.not-empty {
-  border-color: #68A1BE;
-}
-
-// JOINGAME_PAGE
-
-.join-game-page {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  background-image: url("img/player_color_bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.join-game-page .enter-name {
-  border-color: #CCCCCC;
-}
-
-.join-game-page .enter-name:focus {
-  border-color: #74BE68;
-  outline: none;
-}
-
-.join-game-page input.enter-name.not-empty {
-  border-color: #74BE68;
-}
-
-.join-game-page button:hover {
-  color: #b8ffad;
-  transition-duration: 0.3s;
-}
-
+//LETS_GO_SCREEN
 .lets-go-class {
   background-color: black;
 
@@ -781,6 +782,7 @@ input.enter-name.not-empty {
   }
 }
 
+//LOADING_SCREEN
 .loading-screen {
   @keyframes popAnimation {
     0% {
