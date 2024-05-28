@@ -125,7 +125,6 @@ html {
   font-style: italic;
 }
 
-
 // CREATEGAME_PAGE
 
 .create-game {
@@ -147,7 +146,6 @@ html {
   height: 70px;
   background-color: white;
   box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
-  z-index: 5;
 }
 
 .invis-top-bar {
@@ -932,4 +930,17 @@ input.enter-name.not-empty {
   font-family: "Poppins", serif;
   color: white;
   padding: 30px;
+}
+
+.background-waitingroom {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-image: url("img/balloons.png");
+  background-size: 100%;
+  background-repeat: repeat-y;
+  justify-content: center;
+  align-items: center;
 }
