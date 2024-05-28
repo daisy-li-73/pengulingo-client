@@ -15,7 +15,9 @@ function CreateGame(props) {
   // const [playerName, setPlayerName] = useState();
   const [setPlayerName] = useState();
   const onCreateGameClick = () => {
-    // do something
+    // send player name to backend
+    // receive roomID from backend
+    // navigate to room/roomID
   };
   const submitButton = () => {
     return (
