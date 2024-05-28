@@ -22,6 +22,8 @@ import incorrectBg from '../img/foodincorrectbg.png';
 import speechbubble from '../img/speechbubble.png';
 import checked from '../img/checked.png';
 import wrong from '../img/wrong.png';
+import smallloadingicon from '../img/smallloadingicon.png';
+import loadingbuttonbg from '../img/loadingbuttonbg_green.png';
 
 const images = {
   broccoli,
@@ -55,20 +57,24 @@ function GroceryGame(props) {
     if (outcome === 'correct') {
       setCorrectCount(correctCount + 1);
       setCurrentCorrect(1);
-      console.log('added correct', correctCount);
     } else {
+      setCorrectCount(0);
       setCurrentCorrect(-1);
     }
     setShowModal(true);
     setTimeout(() => {
-      setShowModal(false);
-      if (currentQuestionIndex < data.questions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setCurrentCorrect(0);
+      if (outcome === 'correct') {
+        if (currentQuestionIndex < data.questions.length - 1) {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+          setReachedEnd(true);
+        }
       } else {
-        setReachedEnd(true);
+        setCurrentQuestionIndex(0);
       }
-    }, 3000);
+      setCurrentCorrect(0);
+      setShowModal(false);
+    }, 5);
   };
   // find a way to update scores in live time - setCorrectCount only really updates after the handleAnswerClick
 
@@ -76,8 +82,22 @@ function GroceryGame(props) {
     // send final score
     console.log('final score:', correctCount);
     return (
-      <div>
-        <h1>Bravo! Attendez patiemment que vos amis finissent...</h1>
+      <div className="gamefinished-screen">
+        <div className="game-finished-waitingscreen">
+          <p>Bravo! Attendez patiemment que vos amis finissent...</p>
+        </div>
+        <div className="loading-icon-image">
+          <img
+            src={smallloadingicon}
+            className="loading-icon-image-icon"
+            alt="small loading icon"
+          />
+          <img
+            src={loadingbuttonbg}
+            className="loading-icon-image-bg"
+            alt="small loading icon"
+          />
+        </div>
       </div>
     );
   };
