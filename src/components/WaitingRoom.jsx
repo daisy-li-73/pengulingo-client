@@ -12,10 +12,11 @@ function WaitingRoom(props) {
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   useEffect(() => {
     getState(roomID);
-  });
+  }); // , []
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   useEffect(() => {
     console.log(gameInfo);
+    console.log('player 2:', gameInfo?.players?.[1]?.name);
   });
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';
@@ -43,7 +44,7 @@ function WaitingRoom(props) {
         }}
       >
         {playerName ? (
-          <p className="playername-text">{player1Name}</p>
+          <p className="playername-text">{playerName}</p>
         ) : (
           <div className="loading-icon-image">
             <img

@@ -151,15 +151,23 @@ html {
 .invis-top-bar {
   position: absolute;
   display: flex;
+  flex-direction: row;
+  width: calc(100% - 60px);
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .pengulingo-title {
-  position: fixed;
   font-weight: 600;
   font-size: 20px;
   color: #11adde;
-  padding-left: 30px;
   cursor: pointer;
+}
+
+.language-icon {
+  z-index: 5;
 }
 
 .invis-top-bar a {

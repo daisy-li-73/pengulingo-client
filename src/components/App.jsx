@@ -8,6 +8,7 @@ import JoinGame from './JoinGame';
 import LetsGo from './lets-go/lets-go';
 import LoadingPage from './loading-page/loading-screen';
 import WaitingRoom from './WaitingRoom';
+import ChooseGame from './ChooseGame';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
@@ -28,6 +29,7 @@ function App() {
           <Route path="/letsgo" element={<LetsGo />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/room/:roomID" element={<WaitingRoom />} />
+          <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<Test />} />
           <Route path="*" element={<FallBack />} />
         </Routes>

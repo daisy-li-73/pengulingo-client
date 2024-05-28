@@ -19,10 +19,12 @@ function JoinGame(props) {
 
   const onJoinGameClick = async () => {
     try {
-      await joinRoom({
+      const response = await joinRoom({
         roomKey, playerInfo: { name, host: false },
       });
       console.log('Room joined!');
+      console.log(response);
+      navigate(`/room/${response.data._id}`);
     } catch (error) {
       console.log('Error joining room:', error);
     }

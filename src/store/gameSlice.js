@@ -48,8 +48,10 @@ export default function createGameSlice(set, get) {
       try {
         const response = await axios.post(`${ROOT_URL}/rooms/joinRoom`, data);
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/joinRoom');
+        return response;
       } catch (error) {
         console.error('Error joining room: ', error.message);
+        return error.message;
       }
     },
     submitAnswer: async (id, data) => {
