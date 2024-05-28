@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
@@ -9,6 +10,9 @@ import broccoli from '../img/broccoli.png';
 import baguette from '../img/baguette.png';
 import coffeebeans from '../img/coffeebeans.png';
 import strawberry from '../img/strawberry.png';
+import unchecked from '../img/unchecked.png';
+import correctBg from '../img/foodcorrectbg.png';
+import incorrectBg from '../img/foodincorrectbg.png';
 
 const images = {
   broccoli,
@@ -47,7 +51,7 @@ function GroceryGame(props) {
       } else {
         setReachedEnd(true);
       }
-    }, 2000);
+    }, 3000);
   };
   // find a way to update scores in live time - setCorrectCount only really updates after the handleAnswerClick
 
@@ -68,16 +72,38 @@ function GroceryGame(props) {
       <PageTopBar language />
       {!reachedEnd && (
         <div className="grocery-questions">
-          <h1>Je cherche {currentQuestion.question}</h1>
-          <div>
-            {currentQuestion.answers.map((answer, index) => (
-              <button onClick={() => handleAnswerClick(answer.outcome)}>
-                <img src={images[answer.img_key]} alt={answer.text} />
-              </button>
-            ))}
+          <div className="grocery-question-text">
+            <img src={unchecked} />
+            <p>Je cherche</p>
+            <p className="grocery-question-textdeco">
+              {currentQuestion.question}.
+            </p>
           </div>
-          {showModal && (
-            <div className="modal">
+          {!showModal ? (
+            <div className="grocery-question-buttons">
+              {currentQuestion.answers.map((answer) => (
+                <button onClick={() => handleAnswerClick(answer.outcome)}>
+                  <img src={images[answer.img_key]} alt={answer.text} />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="grocery-correct-modal">
+              <div className="grocery-question-buttons">
+                {currentQuestion.answers.map((answer) => (
+                  <button
+                    className="deco"
+                    style={{
+                      backgroundImage: `url(${
+                        answer.outcome === 'correct' ? correctBg : incorrectBg
+                      })`,
+                      cursor: 'wait',
+                    }}
+                  >
+                    <img src={images[answer.img_key]} alt={answer.text} />
+                  </button>
+                ))}
+              </div>
               <p>
                 {currentCorrect
                   ? data.outcomes.correct.text

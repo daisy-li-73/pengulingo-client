@@ -1046,7 +1046,6 @@ input.enter-name.not-empty {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   background-image: url(img/groceries_bg.png);
   background-size: contain;
@@ -1062,5 +1061,60 @@ input.enter-name.not-empty {
 }
 
 .grocery-questions {
+  position: relative;
   z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 45%;
+}
+
+.grocery-question-text img {
+  width: 40px;
+  height: 40px;
+}
+
+.grocery-question-text {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  background-color: white;
+  align-items: center;
+  padding-left: 30px;
+  border-radius: 0 40px 40px 0;
+}
+
+.grocery-correct-modal {
+  position: relative;
+  display: flex;
+}
+
+.grocery-question-buttons {
+  position: relative;
+  padding-left: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.grocery-question-buttons button {
+  background-color: transparent;
+  background-image: url(img/foodbuttonbg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: fit-content;
+  border: none;
+  cursor: pointer;
+}
+
+.grocery-question-buttons button:hover {
+  background-image: url(img/foodbuttonbg-hover.png);
+  transition-duration: 0.3s;
+}
+
+.grocery-question-textdeco {
+  text-decoration: underline;
+  color: #11ADDE;
 }
