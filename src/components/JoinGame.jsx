@@ -25,7 +25,7 @@ function JoinGame(props) {
         roomKey, playerInfo: { name, host: false },
       });
       console.log(response);
-      navigate(`/room/${response.data._id}`);
+      navigate(`/room/${response.data._id}`, { state: { playerNumber: response.data.players.length - 1, isAdmin: false } });
     } catch (error) {
       console.log('Error joining room:', error);
       toast.error('Error 404: Room is full or room doesn\'t exist!');

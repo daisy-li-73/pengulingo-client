@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import PageTopBar from './PageTopBar';
 import useStore from '../store';
 import smallloadingicon from '../img/smallloadingicon.png';
@@ -12,14 +12,19 @@ import playercolorbg from '../img/player_color_bg.png';
 function WaitingRoom(props) {
   const { roomID } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const { isAdmin, playerNumber } = location.state || { isAdmin: false, playerNumber: 0 };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  const changeGameStatus = useStore(({ gameSlice }) => gameSlice.changeGameStatus);
   useEffect(() => {
     getState(roomID);
   }, []);
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
+  if (gameInfo?.status === 'IN_PROGRESS') { // change to CHOOSE_GAME status
+    navigate(`/room/${gameInfo.data._id}`, { state: { playerNumber, isAdmin } });
+  }
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';
   const player3Name = gameInfo?.players?.[2]?.name || '';
@@ -29,12 +34,15 @@ function WaitingRoom(props) {
   const bgstyle = {
     '--bg-url': `url("${backgroundUrl}")`,
   };
+  const onStartGameClick = async () => {
+    await changeGameStatus(roomID, 'IN_PROGRESS'); // change to CHOOSE_GAME status
+  };
   const codeDiv = () => {
     return gameInfo?.status === 'CLOSED' ? (
       <div className="code">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         {isAdmin ? (
-          <button type="button">Let&apos;s Go!</button>
+          <button type="button" onClick={onStartGameClick}>Let&apos;s Go!</button>
         ) : (
           <p>Waiting on host...</p>
         )}
