@@ -19,10 +19,10 @@ function WaitingRoom(props) {
   const changeGameStatus = useStore(({ gameSlice }) => gameSlice.changeGameStatus);
   useEffect(() => {
     getState(roomID);
-  }, []);
+  }, []); // remove this for constant updates
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
-  if (gameInfo?.status === 'IN_PROGRESS') { // change to CHOOSE_GAME status
+  if (gameInfo?.status === 'CLOSEd') {
     navigate(`/room/${gameInfo.data._id}/1`, { state: { playerNumber, isAdmin } });
   }
   const player1Name = gameInfo?.players?.[0]?.name || '';
@@ -35,10 +35,10 @@ function WaitingRoom(props) {
     '--bg-url': `url("${backgroundUrl}")`,
   };
   const onStartGameClick = async () => {
-    await changeGameStatus(roomID, 'IN_PROGRESS'); // change to CHOOSE_GAME status
+    await changeGameStatus(roomID, 'CLOSED');
   };
   const codeDiv = () => {
-    return gameInfo?.status === 'CLOSED' ? (
+    return gameInfo?.players.length === 4 ? (
       <div className="code">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         {isAdmin ? (
