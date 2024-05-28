@@ -21,7 +21,7 @@
       ]
     },
     {
-      "question": "du grains de café",
+      "question": "des grains de café",
       "answers": [
         {
           "text": "coffee beans",
@@ -31,6 +31,51 @@
         {
           "text": "strawberry",
           "img_key": "strawberry",
+          "outcome": "incorrect"
+        }
+      ]
+    },
+    {
+      "question": "une vache",
+      "answers": [
+        {
+          "text": "cow",
+          "img_key": "cow",
+          "outcome": "correct"
+        },
+        {
+          "text": "celery",
+          "img_key": "celery",
+          "outcome": "incorrect"
+        }
+      ]
+    },
+    {
+      "question": "une carrote",
+      "answers": [
+        {
+          "text": "carrot",
+          "img_key": "carrot",
+          "outcome": "correct"
+        },
+        {
+          "text": "tomato",
+          "img_key": "tomato",
+          "outcome": "incorrect"
+        }
+      ]
+    },
+    {
+      "question": "un homard",
+      "answers": [
+        {
+          "text": "lobster",
+          "img_key": "lobster",
+          "outcome": "correct"
+        },
+        {
+          "text": "wheat",
+          "img_key": "wheat",
           "outcome": "incorrect"
         }
       ]
