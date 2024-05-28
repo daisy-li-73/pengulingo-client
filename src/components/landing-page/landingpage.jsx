@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PageTopBar from '../PageTopBar';
-import './styles2.css';
 
 function LandingScreen() {
   const [language, setLanguage] = useState('French');
@@ -13,7 +12,7 @@ function LandingScreen() {
   };
 
   return (
-    <div>
+    <div className="landing-page">
       <PageTopBar />
       <div className="image-container">
         <div className="pengu-container">
