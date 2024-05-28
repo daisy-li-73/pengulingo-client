@@ -23,7 +23,7 @@ function WaitingRoom(props) {
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
   if (gameInfo?.status === 'IN_PROGRESS') { // change to CHOOSE_GAME status
-    navigate(`/room/${gameInfo.data._id}`, { state: { playerNumber, isAdmin } });
+    navigate(`/room/${gameInfo.data._id}/1`, { state: { playerNumber, isAdmin } });
   }
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';

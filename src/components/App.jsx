@@ -9,14 +9,15 @@ import LoadingPage from './loading-page/loading-screen';
 import WaitingRoom from './WaitingRoom';
 import ChooseGame from './ChooseGame';
 import 'react-toastify/dist/ReactToastify.css';
+import GroceryGame from './GroceryGame';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
 }
 
-function Test(props) {
-  return <div>Testing page for now</div>;
-}
+// function Test(props) {
+//   return <div>Testing page for now</div>;
+// }
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
-          <Route path="/room/:roomID/:gameID" element={<Test />} />
+          <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
           <Route path="*" element={<FallBack />} />
         </Routes>
         <ToastContainer />
