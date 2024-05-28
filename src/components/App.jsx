@@ -1,7 +1,6 @@
 import React from 'react';
-import {
-  BrowserRouter, Routes, Route,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import CreateGame from './CreateGame';
 import LandingScreen from './landing-page/landingpage';
 import JoinGame from './JoinGame';
@@ -9,6 +8,7 @@ import LetsGo from './lets-go/lets-go';
 import LoadingPage from './loading-page/loading-screen';
 import WaitingRoom from './WaitingRoom';
 import ChooseGame from './ChooseGame';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
@@ -33,6 +33,7 @@ function App() {
           <Route path="/room/:roomID/:gameID" element={<Test />} />
           <Route path="*" element={<FallBack />} />
         </Routes>
+        <ToastContainer />
       </div>
     </BrowserRouter>
   );
