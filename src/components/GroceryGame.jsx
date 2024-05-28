@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
@@ -9,12 +10,32 @@ import broccoli from '../img/broccoli.png';
 import baguette from '../img/baguette.png';
 import coffeebeans from '../img/coffeebeans.png';
 import strawberry from '../img/strawberry.png';
+import carrot from '../img/carrot.png';
+import celery from '../img/celery.png';
+import cow from '../img/cow.png';
+import lobster from '../img/lobster.png';
+import tomato from '../img/tomato.png';
+import wheat from '../img/wheat.png';
+import unchecked from '../img/unchecked.png';
+import correctBg from '../img/foodcorrectbg.png';
+import incorrectBg from '../img/foodincorrectbg.png';
+import speechbubble from '../img/speechbubble.png';
+import checked from '../img/checked.png';
+import wrong from '../img/wrong.png';
+import smallloadingicon from '../img/smallloadingicon.png';
+import loadingbuttonbg from '../img/loadingbuttonbg_green.png';
 
 const images = {
   broccoli,
   baguette,
   coffeebeans,
   strawberry,
+  carrot,
+  celery,
+  cow,
+  lobster,
+  wheat,
+  tomato,
 };
 
 function GroceryGame(props) {
@@ -27,7 +48,7 @@ function GroceryGame(props) {
   };
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const [currentCorrect, setCurrentCorrect] = useState(false);
+  const [currentCorrect, setCurrentCorrect] = useState(0); // -1:incorrect, 0: nothing, 1:correct
   const [showModal, setShowModal] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(false);
 
@@ -35,19 +56,25 @@ function GroceryGame(props) {
     console.log('outcome', outcome);
     if (outcome === 'correct') {
       setCorrectCount(correctCount + 1);
-      setCurrentCorrect(true);
-      console.log('added correct', correctCount);
+      setCurrentCorrect(1);
+    } else {
+      setCorrectCount(0);
+      setCurrentCorrect(-1);
     }
     setShowModal(true);
     setTimeout(() => {
-      setShowModal(false);
-      if (currentQuestionIndex < data.questions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setCurrentCorrect(false);
+      if (outcome === 'correct') {
+        if (currentQuestionIndex < data.questions.length - 1) {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+          setReachedEnd(true);
+        }
       } else {
-        setReachedEnd(true);
+        setCurrentQuestionIndex(0);
       }
-    }, 2000);
+      setCurrentCorrect(0);
+      setShowModal(false);
+    }, 5);
   };
   // find a way to update scores in live time - setCorrectCount only really updates after the handleAnswerClick
 
@@ -55,34 +82,82 @@ function GroceryGame(props) {
     // send final score
     console.log('final score:', correctCount);
     return (
-      <div>
-        <h1>Bravo! Attendez patiemment que vos amis finissent...</h1>
+      <div className="gamefinished-screen">
+        <div className="game-finished-waitingscreen">
+          <p>Bravo! Attendez patiemment que vos amis finissent...</p>
+        </div>
+        <div className="loading-icon-image">
+          <img
+            src={smallloadingicon}
+            className="loading-icon-image-icon"
+            alt="small loading icon"
+          />
+          <img
+            src={loadingbuttonbg}
+            className="loading-icon-image-bg"
+            alt="small loading icon"
+          />
+        </div>
       </div>
     );
   };
 
   const currentQuestion = data.questions[currentQuestionIndex];
+  const questionStatus = () => {
+    if (currentCorrect === -1) {
+      return wrong;
+    } else if (currentCorrect === 0) {
+      return unchecked;
+    } else {
+      return checked;
+    }
+  };
 
   return (
     <div className="grocery-game-page">
       <PageTopBar language />
       {!reachedEnd && (
         <div className="grocery-questions">
-          <h1>Je cherche {currentQuestion.question}</h1>
-          <div>
-            {currentQuestion.answers.map((answer, index) => (
-              <button onClick={() => handleAnswerClick(answer.outcome)}>
-                <img src={images[answer.img_key]} alt={answer.text} />
-              </button>
-            ))}
+          <div className="grocery-question-text">
+            <img src={questionStatus()} />
+            <p>Je cherche</p>
+            <p className="grocery-question-textdeco">
+              {currentQuestion.question}.
+            </p>
           </div>
-          {showModal && (
-            <div className="modal">
-              <p>
-                {currentCorrect
-                  ? data.outcomes.correct.text
-                  : data.outcomes.incorrect.text}
-              </p>
+          {!showModal ? (
+            <div className="grocery-question-buttons">
+              {currentQuestion.answers.map((answer) => (
+                <button onClick={() => handleAnswerClick(answer.outcome)}>
+                  <img src={images[answer.img_key]} alt={answer.text} />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="grocery-correct-modal">
+              <div className="grocery-question-buttons">
+                {currentQuestion.answers.map((answer) => (
+                  <button
+                    className="deco"
+                    style={{
+                      backgroundImage: `url(${
+                        answer.outcome === 'correct' ? correctBg : incorrectBg
+                      })`,
+                      cursor: 'wait',
+                    }}
+                  >
+                    <img src={images[answer.img_key]} alt={answer.text} />
+                  </button>
+                ))}
+              </div>
+              <div className="grocery-correct-modal-textbg">
+                <p className="speechbubble-text">
+                  {currentCorrect === 1
+                    ? data.outcomes.correct.text
+                    : data.outcomes.incorrect.text}
+                </p>
+                <img src={speechbubble} className="speechbubble-image" />
+              </div>
             </div>
           )}
         </div>

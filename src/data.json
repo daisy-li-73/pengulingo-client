@@ -2,7 +2,7 @@
   "title": "Grocery Game",
   "outcomes": {
     "correct": { "text": "Tu as raison! À la prochaine!" },
-    "incorrect": { "text": "Je ne pense pas que c'est cela..." }
+    "incorrect": { "text": "Je ne pense pas que c'est cela... on recommence!" }
   },
   "questions": [
     {
@@ -21,17 +21,62 @@
       ]
     },
     {
-      "question": "du grains de café",
+      "question": "des grains de café",
       "answers": [
-        {
-          "text": "coffee beans",
-          "img_key": "coffeebeans",
-          "outcome": "correct"
-        },
         {
           "text": "strawberry",
           "img_key": "strawberry",
           "outcome": "incorrect"
+        },
+        {
+          "text": "coffee beans",
+          "img_key": "coffeebeans",
+          "outcome": "correct"
+        }
+      ]
+    },
+    {
+      "question": "une vache",
+      "answers": [
+        {
+          "text": "cow",
+          "img_key": "cow",
+          "outcome": "correct"
+        },
+        {
+          "text": "celery",
+          "img_key": "celery",
+          "outcome": "incorrect"
+        }
+      ]
+    },
+    {
+      "question": "une carrote",
+      "answers": [
+        {
+          "text": "tomato",
+          "img_key": "tomato",
+          "outcome": "incorrect"
+        },
+        {
+          "text": "carrot",
+          "img_key": "carrot",
+          "outcome": "correct"
+        }
+      ]
+    },
+    {
+      "question": "un homard",
+      "answers": [
+        {
+          "text": "wheat",
+          "img_key": "wheat",
+          "outcome": "incorrect"
+        },
+        {
+          "text": "lobster",
+          "img_key": "lobster",
+          "outcome": "correct"
         }
       ]
     }
