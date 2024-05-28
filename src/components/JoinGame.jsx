@@ -8,12 +8,26 @@ import smallloadingicon from '../img/smallloadingicon.png';
 import backbutton from '../img/backbutton.png';
 import loadingbuttonbg from '../img/loadingbuttonbg_green.png'; // change this
 import createbuttonbg from '../img/createbuttonbg_green.png'; // change this
+import useStore from '../store';
 
 function JoinGame(props) {
   const navigate = useNavigate();
-  const [code, setCode] = useState('');
+  const [roomKey, setRoomKey] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
+  const joinRoom = useStore(({ gameSlice }) => gameSlice.joinRoom);
+
+  const onJoinGameClick = async () => {
+    try {
+      await joinRoom({
+        roomKey, playerInfo: { name, host: false },
+      });
+      console.log('Room joined!');
+    } catch (error) {
+      console.log('Error joining room:', error);
+    }
+  };
+
   const handleCodeInput = (e) => {
     const inputValue = e.target.value;
     const inputElement = e.target;
@@ -22,7 +36,7 @@ function JoinGame(props) {
     if (inputValue !== truncatedValue) {
       inputElement.value = truncatedValue;
     }
-    setCode(truncatedValue);
+    setRoomKey(truncatedValue);
     // change border color if input is valid
     if (inputValue.length >= 4) {
       inputElement.classList.add('not-empty');
@@ -47,7 +61,7 @@ function JoinGame(props) {
       inputElement.classList.remove('not-empty');
     }
     // check whether to change loading
-    if (inputValue.length >= 3 && code.length === 4) {
+    if (inputValue.length >= 3 && roomKey.length === 4) {
       setLoading(false);
     } else {
       setLoading(true);
@@ -73,7 +87,7 @@ function JoinGame(props) {
           <button
             type="button"
             className="createbutton"
-            // onClick={onCreateGameClick} // send to db, if can't find code, then send toast error and reset code field
+            onClick={onJoinGameClick} // send to db, if can't find code, then send toast error and reset code field
           >
             <p className="create-button-text">Join!</p>
             <img src={createbuttonbg} alt="create button bg" />
