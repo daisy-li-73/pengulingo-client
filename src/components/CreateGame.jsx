@@ -8,17 +8,27 @@ import smallloadingicon from '../img/smallloadingicon.png';
 import loadingbuttonbg from '../img/loadingbuttonbg.png';
 import backbutton from '../img/backbutton.png';
 import createbuttonbg from '../img/createbuttonbg.png';
+import useStore from '../store';
 
 function CreateGame(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  // const [playerName, setPlayerName] = useState();
-  const [setPlayerName] = useState();
-  const onCreateGameClick = () => {
-    // send player name to backend
-    // receive roomID from backend
-    // navigate to room/roomID
+  const [creator, setCreator] = useState();
+  // const [setPlayerName] = useState();
+  const createRoom = useStore(({ gameSlice }) => gameSlice.createRoom);
+  const numQuestions = 5;
+
+  const onCreateGameClick = async () => {
+    try {
+      await createRoom({
+        creator, numQuestions,
+      });
+      console.log('Room created!');
+    } catch (error) {
+      console.log('Error creating room:', error);
+    }
   };
+
   const submitButton = () => {
     return (
       <div>
@@ -49,13 +59,13 @@ function CreateGame(props) {
     );
   };
   const handleNameInput = (e) => {
+    setCreator(e.target.value);
     if (e.target.value.length >= 3) {
       setLoading(false);
       e.target.classList.add('not-empty');
     } else {
       e.target.classList.remove('not-empty');
       setLoading(true);
-      setPlayerName(e.target.value);
     }
   };
   return (
