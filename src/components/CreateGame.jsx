@@ -14,16 +14,15 @@ function CreateGame(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [creator, setCreator] = useState();
-  // const [setPlayerName] = useState();
   const createRoom = useStore(({ gameSlice }) => gameSlice.createRoom);
   const numQuestions = 5;
 
   const onCreateGameClick = async () => {
     try {
-      await createRoom({
+      const response = await createRoom({
         creator, numQuestions,
       });
-      console.log('Room created!');
+      navigate(`/room/${response.data._id}`);
     } catch (error) {
       console.log('Error creating room:', error);
     }

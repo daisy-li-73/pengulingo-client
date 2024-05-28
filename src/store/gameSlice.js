@@ -20,8 +20,10 @@ export default function createGameSlice(set, get) {
       try {
         const response = await axios.post(`${ROOT_URL}/rooms/`, data);
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/createRoom');
+        return response;
       } catch (error) {
         console.error('Error creating room: ', error.message);
+        return error.message();
       }
     },
     changeGameStatus: async (id, status) => {

@@ -1,17 +1,27 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PageTopBar from './PageTopBar';
+import useStore from '../store';
 import smallloadingicon from '../img/smallloadingicon.png';
 import loadingcircle from '../img/loading_circle.png';
 import pengu from '../img/pengu_happy.png';
 
-// change props to usestore
 function WaitingRoom(props) {
-  const player1Name = props.player1Name || 'Selena';
-  const player2Name = props.player2Name || '';
-  const player3Name = props.player3Name || '';
-  const player4Name = props.player4Name || '';
-  const code = props.code || '5L4Y';
+  const { roomID } = useParams();
+  const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  useEffect(() => {
+    getState(roomID);
+  });
+  const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
+  useEffect(() => {
+    console.log(gameInfo);
+  });
+  const player1Name = gameInfo?.players?.[0]?.name || '';
+  const player2Name = gameInfo?.players?.[1]?.name || '';
+  const player3Name = gameInfo?.players?.[2]?.name || '';
+  const player4Name = gameInfo?.players?.[3]?.name || '';
+  const code = gameInfo.roomKey || 'xxxx';
   //   const isAdmin = props.isAdmin || false;
   const playerBar = (color, colorborder, playerName, left) => {
     let radiusleft, radiusright;
