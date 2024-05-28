@@ -151,15 +151,23 @@ html {
 .invis-top-bar {
   position: absolute;
   display: flex;
+  flex-direction: row;
+  width: calc(100% - 60px);
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .pengulingo-title {
-  position: fixed;
   font-weight: 600;
   font-size: 20px;
   color: #11adde;
-  padding-left: 30px;
   cursor: pointer;
+}
+
+.language-icon {
+  z-index: 5;
 }
 
 .invis-top-bar a {
@@ -898,7 +906,7 @@ input.enter-name.not-empty {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url("img/everyone_bg.png");
+  background-image: var(--bg-url);
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -931,7 +939,32 @@ input.enter-name.not-empty {
   align-items: center;
   gap: 20px;
   z-index: 4;
-  font-family: 'Poppins', serif;
+  font-family: "Poppins", serif;
+}
+
+.code button {
+  background-color: #48819e;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  outline: 2px solid #68A1BE;
+  outline-offset: -5px;
+  padding: 18px 7%;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 28px;
+  font-family: "Poppins", serif;
+}
+
+.code button:hover {
+  background-color: #68A1BE;
+  outline: 2px solid #48819e;
+  transition-duration: 0.3s;
+}
+
+.code p {
+  font-weight: 600;
+  font-size: 26px;
 }
 
 .code h2 {
@@ -954,7 +987,7 @@ input.enter-name.not-empty {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  background-color: #48819E;
+  background-color: #48819e;
   color: white;
   border: none;
   font-size: 30px;
@@ -1004,4 +1037,30 @@ input.enter-name.not-empty {
   background-repeat: repeat-y;
   justify-content: center;
   align-items: center;
+}
+
+// GAME_PAGE
+
+.grocery-game-page {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(img/groceries_bg.png);
+  background-size: contain;
+  background-repeat: repeat;
+  overflow: hidden;
+}
+
+.pengu-shopping-bg {
+  position: absolute;
+  right: 4%;
+  bottom: 13%;
+  z-index: 0;
+}
+
+.grocery-questions {
+  z-index: 6;
 }

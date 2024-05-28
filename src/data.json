@@ -1,0 +1,39 @@
+{
+  "title": "Grocery Game",
+  "outcomes": {
+    "correct": { "text": "Tu as raison! À la prochaine!" },
+    "incorrect": { "text": "Je ne pense pas que c'est cela..." }
+  },
+  "questions": [
+    {
+      "question": "du pain",
+      "answers": [
+        {
+          "text": "bread",
+          "img_key": "baguette",
+          "outcome": "correct"
+        },
+        {
+          "text": "broccoli",
+          "img_key": "broccoli",
+          "outcome": "incorrect"
+        }
+      ]
+    },
+    {
+      "question": "du grains de café",
+      "answers": [
+        {
+          "text": "coffee beans",
+          "img_key": "coffeebeans",
+          "outcome": "correct"
+        },
+        {
+          "text": "strawberry",
+          "img_key": "strawberry",
+          "outcome": "incorrect"
+        }
+      ]
+    }
+  ]
+}

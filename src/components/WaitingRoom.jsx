@@ -1,18 +1,67 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import PageTopBar from './PageTopBar';
+import useStore from '../store';
 import smallloadingicon from '../img/smallloadingicon.png';
 import loadingcircle from '../img/loading_circle.png';
 import pengu from '../img/pengu_happy.png';
+import admincolorbg from '../img/admin_color_bg.png';
+import playercolorbg from '../img/player_color_bg.png';
 
-// change props to usestore
 function WaitingRoom(props) {
-  const player1Name = props.player1Name || 'Selena';
-  const player2Name = props.player2Name || '';
-  const player3Name = props.player3Name || '';
-  const player4Name = props.player4Name || '';
-  const code = props.code || '5L4Y';
-  //   const isAdmin = props.isAdmin || false;
+  const { roomID } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  const { isAdmin, playerNumber } = location.state || { isAdmin: false, playerNumber: 0 };
+  const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  const changeGameStatus = useStore(({ gameSlice }) => gameSlice.changeGameStatus);
+  useEffect(() => {
+    getState(roomID);
+  }, []);
+  const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
+  console.log(gameInfo);
+  if (gameInfo?.status === 'IN_PROGRESS') { // change to CHOOSE_GAME status
+    navigate(`/room/${gameInfo.data._id}/1`, { state: { playerNumber, isAdmin } });
+  }
+  const player1Name = gameInfo?.players?.[0]?.name || '';
+  const player2Name = gameInfo?.players?.[1]?.name || '';
+  const player3Name = gameInfo?.players?.[2]?.name || '';
+  const player4Name = gameInfo?.players?.[3]?.name || '';
+  const code = gameInfo.roomKey || 'xxxx';
+  const backgroundUrl = isAdmin ? admincolorbg : playercolorbg;
+  const bgstyle = {
+    '--bg-url': `url("${backgroundUrl}")`,
+  };
+  const onStartGameClick = async () => {
+    await changeGameStatus(roomID, 'IN_PROGRESS'); // change to CHOOSE_GAME status
+  };
+  const codeDiv = () => {
+    return gameInfo?.status === 'CLOSED' ? (
+      <div className="code">
+        <img src={pengu} alt="pengu logo" className="pengu-logo" />
+        {isAdmin ? (
+          <button type="button" onClick={onStartGameClick}>Let&apos;s Go!</button>
+        ) : (
+          <p>Waiting on host...</p>
+        )}
+      </div>
+    ) : (
+      <div className="code">
+        <img src={pengu} alt="pengu logo" className="pengu-logo" />
+        <div className="code-text">
+          {Array.from(code).map((letter) => (
+            <div className="code-circle">{letter}</div>
+          ))}
+        </div>
+        <h2>
+          Share this code with
+          <br /> your friends!
+        </h2>
+      </div>
+    );
+  };
   const playerBar = (color, colorborder, playerName, left) => {
     let radiusleft, radiusright;
     if (left) {
@@ -33,7 +82,7 @@ function WaitingRoom(props) {
         }}
       >
         {playerName ? (
-          <p className="playername-text">{player1Name}</p>
+          <p className="playername-text">{playerName}</p>
         ) : (
           <div className="loading-icon-image">
             <img
@@ -47,21 +96,10 @@ function WaitingRoom(props) {
     );
   };
   return (
-    <div className="waiting-room-page">
+    <div className="waiting-room-page" style={bgstyle}>
       <PageTopBar />
       <div className="foreground-waitingroom">
-        <div className="code">
-          <img src={pengu} alt="pengu logo" className="pengu-logo" />
-          <div className="code-text">
-            {Array.from(code).map((letter, index) => (
-              <div className="code-circle">{letter}</div>
-            ))}
-          </div>
-          <h2>
-            Share this code with
-            <br /> your friends!
-          </h2>
-        </div>
+        {codeDiv()}
         <div className="display-all-players">
           <div className="display-players">
             {playerBar('#E32222', '#EE6363', player1Name, true)}

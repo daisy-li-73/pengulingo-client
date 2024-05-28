@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import PageTopBar from './PageTopBar';
 import pengu from '../img/pengu_happy.png';
 import loadingcircle from '../img/light_big_loading_circle.png';
@@ -9,6 +10,7 @@ import backbutton from '../img/backbutton.png';
 import loadingbuttonbg from '../img/loadingbuttonbg_green.png'; // change this
 import createbuttonbg from '../img/createbuttonbg_green.png'; // change this
 import useStore from '../store';
+import 'react-toastify/dist/ReactToastify.css';
 
 function JoinGame(props) {
   const navigate = useNavigate();
@@ -19,12 +21,14 @@ function JoinGame(props) {
 
   const onJoinGameClick = async () => {
     try {
-      await joinRoom({
+      const response = await joinRoom({
         roomKey, playerInfo: { name, host: false },
       });
-      console.log('Room joined!');
+      console.log(response);
+      navigate(`/room/${response.data._id}`, { state: { playerNumber: response.data.players.length - 1, isAdmin: false } });
     } catch (error) {
       console.log('Error joining room:', error);
+      toast.error('Error 404: Room is full or room doesn\'t exist!');
     }
   };
 
@@ -36,7 +40,8 @@ function JoinGame(props) {
     if (inputValue !== truncatedValue) {
       inputElement.value = truncatedValue;
     }
-    setRoomKey(truncatedValue);
+    const uppercaseCode = truncatedValue.replace(/[a-z]/g, (char) => char.toUpperCase());
+    setRoomKey(uppercaseCode);
     // change border color if input is valid
     if (inputValue.length >= 4) {
       inputElement.classList.add('not-empty');
@@ -106,6 +111,7 @@ function JoinGame(props) {
           type="text"
           placeholder="Game code"
           onInput={handleCodeInput}
+          value={roomKey}
         />
         <input
           className="enter-name"
