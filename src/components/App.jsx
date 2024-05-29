@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ToastContainer } from 'react-toastify';
 import CreateGame from './CreateGame';
 import LandingScreen from './landing-page/landingpage';
@@ -33,7 +32,6 @@ function App() {
           <Route path="/joingame" element={<JoinGame />} />
           <Route path="/letsgo" element={<LetsGo />} />
           <Route path="/loading" element={<LoadingPage />} />
-          <Route path="/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
