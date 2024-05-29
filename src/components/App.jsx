@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ToastContainer } from 'react-toastify';
 import CreateGame from './CreateGame';
 import LandingScreen from './landing-page/landingpage';
@@ -10,7 +11,6 @@ import LetsGo from './lets-go/lets-go';
 import LoadingPage from './loading-page/loading-screen';
 import WaitingRoom from './WaitingRoom';
 import ChooseGame from './choose-game/choose-game';
-import GoGoGroceries from './go-go-groceries/groceries-background';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-toastify/dist/ReactToastify.css';
 import GroceryGame from './GroceryGame';
@@ -37,6 +37,7 @@ function App() {
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/choosegame" element={<ChooseGame />} />
           <Route path="/gogogroceries" element={<GoGoGroceries />} />
+          <Route path="/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
