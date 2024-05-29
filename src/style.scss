@@ -904,7 +904,6 @@ input.enter-name.not-empty {
 //CHOOSE_GAME
 
 .choose-game {
-
   body,
   html {
     margin: 0;
@@ -1032,34 +1031,34 @@ input.enter-name.not-empty {
   width: 100vw;
 
   .shelves {
-      transform: scale(0.75);
-      position: absolute;
-      top: 8%;
-      width: 100%;
-      right: 12.5%;
-      z-index: 2;
+    transform: scale(0.75);
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    right: 12.5%;
+    z-index: 2;
   }
 
   .checkered-ground {
-      position: absolute;
-      width: 100%;
-      bottom: -5%;
-      right: 0;
+    position: absolute;
+    width: 100%;
+    bottom: -5%;
+    right: 0;
   }
 
   .pengu {
-      position: absolute;
-      transform: scale(0.6);
-      top: 50%;
-      right: 0;
-      z-index: 3;
+    position: absolute;
+    transform: scale(0.6);
+    top: 50%;
+    right: 0;
+    z-index: 3;
   }
 
   .lights {
-      position: absolute;
-      width: 100%;
-      top: 12%;
-      right: 1%;
+    position: absolute;
+    width: 100%;
+    top: 12%;
+    right: 1%;
   }
 }
 
@@ -1098,7 +1097,7 @@ input.enter-name.not-empty {
   color: white;
   border: none;
   border-radius: 50px;
-  outline: 2px solid #68A1BE;
+  outline: 2px solid #68a1be;
   outline-offset: -5px;
   padding: 18px 7%;
   cursor: pointer;
@@ -1108,7 +1107,7 @@ input.enter-name.not-empty {
 }
 
 .code button:hover {
-  background-color: #68A1BE;
+  background-color: #68a1be;
   outline: 2px solid #48819e;
   transition-duration: 0.3s;
 }
@@ -1267,7 +1266,7 @@ input.enter-name.not-empty {
 
 .grocery-question-textdeco {
   text-decoration: underline;
-  color: #11ADDE;
+  color: #11adde;
 }
 
 .grocery-correct-modal-textbg {
@@ -1332,10 +1331,9 @@ input.enter-name.not-empty {
 // GAMEENDSCREEN
 
 .grocery-game-endscreen {
-
-  background-color: #11ADDE;
+  background-color: #11adde;
   color: white;
-  font-family: 'Poppins', serif;
+  font-family: "Poppins", serif;
   width: 100%;
   height: 100vh;
 
@@ -1360,17 +1358,17 @@ input.enter-name.not-empty {
   }
 
   button#replay {
-    color: #11ADDE;
+    color: #11adde;
     background-color: white;
   }
 
   button#replay:hover {
     color: white;
-    background-color: #11ADDE;
+    background-color: #11adde;
   }
 
   button {
-    font-family: 'Poppins', serif;
+    font-family: "Poppins", serif;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -1389,7 +1387,7 @@ input.enter-name.not-empty {
   }
 
   button:hover {
-    color: #11ADDE;
+    color: #11adde;
     background-color: white;
     transition-duration: 0.2s;
   }
@@ -1445,7 +1443,7 @@ input.enter-name.not-empty {
   .winner-outline {
     width: 90px;
     height: 90px;
-    border: #FFE55B 6px solid;
+    border: #ffe55b 6px solid;
     border-radius: 80px;
     position: absolute;
   }
@@ -1468,5 +1466,34 @@ input.enter-name.not-empty {
     position: absolute;
     bottom: var(--bar-height);
   }
+}
 
+// PROGRESS_BAR
+
+.progress-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+
+  .progress-bar {
+    width: 80%;
+  }
+
+  .pengu-racing-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 80%;
+  }
+
+  .pengu-icon {
+    position: absolute;
+    width: 5%;
+    height: auto;
+  }
 }

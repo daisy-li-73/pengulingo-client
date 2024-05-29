@@ -1,30 +1,36 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/function-component-definition */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import bluepengu from '../../img/bluepengu.png';
+import redpengu from '../../img/redpengu.png';
+import yellowpengu from '../../img/yellowpengu.png';
+import greenpengu from '../../img/greenpengu.png';
+import racebar from '../../img/racebar.png';
 
-const ProgressBar = ({ playerProgress }) => {
+const penguIconOrder = [redpengu, bluepengu, yellowpengu, greenpengu];
+const barColorOrder = ['#DE1E11', '#11A1DE', '#DADE11', '#11DE32'];
+const playerColors = ['Red', 'Blue', 'Yellow', 'Green'];
+
+function ProgressBar(props) {
+  const playerProgress = props.playerProgress || [-10, -10, -10, -10];
   const renderPlayerIcons = () => {
-    const players = ['Blue', 'Red', 'Yellow', 'Green'];
-
-    return players.map((color, index) => (
+    return playerProgress.map((progress, playerNumber) => (
       <img
-        // eslint-disable-next-line react/no-array-index-key
-        key={index}
-        src={`images/${color}PenguIcon.png`}
-        className={`pengu-icon ${color.toLowerCase()}-pengu`}
-        style={{ right: `${playerProgress[index] * 20}%` }} // Assuming each player moves 20% of the bar width for each unit of progress
-        alt={`${color} Pengu`}
+        src={penguIconOrder[playerNumber]}
+        className="pengu-icon"
+        style={{
+          right: `${playerProgress[playerNumber] * 18 + playerNumber}%`,
+        }}
       />
     ));
   };
 
   return (
     <div className="progress-container">
-      {renderPlayerIcons()}
-      <img src="images/Bar.png" className="progress-bar" alt="Progress Bar" />
+      <div className="pengu-racing-icons"> {renderPlayerIcons()}</div>
+      <img src={racebar} className="progress-bar" alt="Progress Bar" />
     </div>
   );
-};
+}
 
 export default ProgressBar;
