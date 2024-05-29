@@ -14,16 +14,28 @@ function WaitingRoom(props) {
   const location = useLocation();
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
-  const { isAdmin, playerNumber } = location.state || { isAdmin: false, playerNumber: 0 };
+  const { playerName, isAdmin } = location.state || {
+    playerName: '',
+    isAdmin: false,
+  };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
-  const changeGameStatus = useStore(({ gameSlice }) => gameSlice.changeGameStatus);
+  const changeGameStatus = useStore(
+    ({ gameSlice }) => gameSlice.changeGameStatus,
+  );
+
   useEffect(() => {
-    getState(roomID);
-  }, []); // remove this for constant updates
+    const timeoutId = setTimeout(() => {
+      getState(roomID);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  });
+
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
-  if (gameInfo?.status === 'CLOSEd') {
-    navigate(`/room/${gameInfo.data._id}/1`, { state: { playerNumber, isAdmin } });
+  if (gameInfo?.status === 'CLOSED') {
+    navigate(`/room/${roomID}/1`, {
+      state: { playerName, isAdmin },
+    });
   }
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';
@@ -35,14 +47,16 @@ function WaitingRoom(props) {
     '--bg-url': `url("${backgroundUrl}")`,
   };
   const onStartGameClick = async () => {
-    await changeGameStatus(roomID, 'CLOSED');
+    await changeGameStatus(roomID, { status: 'CLOSED' });
   };
   const codeDiv = () => {
     return gameInfo?.players.length === 4 ? (
       <div className="code">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         {isAdmin ? (
-          <button type="button" onClick={onStartGameClick}>Let&apos;s Go!</button>
+          <button type="button" onClick={onStartGameClick}>
+            Let&apos;s Go!
+          </button>
         ) : (
           <p>Waiting on host...</p>
         )}
@@ -62,7 +76,7 @@ function WaitingRoom(props) {
       </div>
     );
   };
-  const playerBar = (color, colorborder, playerName, left) => {
+  const playerBar = (color, colorborder, pName, left) => {
     let radiusleft, radiusright;
     if (left) {
       radiusleft = 50;
@@ -81,8 +95,8 @@ function WaitingRoom(props) {
           '--radius-right': `${radiusright}px`,
         }}
       >
-        {playerName ? (
-          <p className="playername-text">{playerName}</p>
+        {pName ? (
+          <p className="playername-text">{pName}</p>
         ) : (
           <div className="loading-icon-image">
             <img
