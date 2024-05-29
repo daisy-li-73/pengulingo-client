@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ToastContainer } from 'react-toastify';
 import CreateGame from './CreateGame';
 import LandingScreen from './landing-page/landingpage';
