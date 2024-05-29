@@ -1164,7 +1164,7 @@ input.enter-name.not-empty {
   text-align: center;
 }
 
-.loading-icon-image {
+.gamefinished-screen .loading-icon-image {
   position: absolute;
   display: flex;
   left: 0;
@@ -1172,7 +1172,7 @@ input.enter-name.not-empty {
   bottom: 5%;
 }
 
-.loading-icon-image img {
+.gamefinished-screen .loading-icon-image img {
   max-width: 100%;
   height: auto;
   transform: scaleX(-1);

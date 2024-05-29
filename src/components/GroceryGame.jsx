@@ -74,7 +74,7 @@ function GroceryGame(props) {
       }
       setCurrentCorrect(0);
       setShowModal(false);
-    }, 5);
+    }, 3000);
   };
   // find a way to update scores in live time - setCorrectCount only really updates after the handleAnswerClick
 
