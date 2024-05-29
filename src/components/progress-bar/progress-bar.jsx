@@ -12,7 +12,7 @@ const barColorOrder = ['#DE1E11', '#11A1DE', '#DADE11', '#11DE32'];
 const playerColors = ['Red', 'Blue', 'Yellow', 'Green'];
 
 function ProgressBar(props) {
-  const playerProgress = props.playerProgress || [0, 3, 3, 5];
+  const playerProgress = props.playerProgress || [-10, -10, -10, -10];
   const renderPlayerIcons = () => {
     return playerProgress.map((progress, playerNumber) => (
       <img

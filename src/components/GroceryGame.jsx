@@ -5,7 +5,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import data from '../data.json';
 import useStore from '../store';
+
 import PageTopBar from './PageTopBar';
+import ProgressBar from './progress-bar/progress-bar';
+
 import pengushopping from '../img/pengu_shopping.png';
 import broccoli from '../img/broccoli.png';
 import baguette from '../img/baguette.png';
@@ -59,6 +62,16 @@ function GroceryGame(props) {
   });
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('in grocery game:', gameInfo);
+  const [pointsArray, setPointsArray] = useState([]);
+
+  useEffect(() => {
+    if (gameInfo && gameInfo.players) {
+      const newPointsArray = gameInfo.players.map((player) => player.points);
+      setPointsArray(newPointsArray);
+    }
+  }, [gameInfo]);
+
+  console.log('points array:', pointsArray);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -183,6 +196,7 @@ function GroceryGame(props) {
         </div>
       )}
       {reachedEnd && uponEnd()}
+      <ProgressBar playerProgress={pointsArray} />
       <img
         className="pengu-shopping-bg"
         src={pengushopping}
