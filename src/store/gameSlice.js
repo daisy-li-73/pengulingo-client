@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default function createGameSlice(set, get) {
-  // const ROOT_URL = 'https://pengulingo-api.onrender.com';
-  const ROOT_URL = 'http://localhost:9090';
+  const ROOT_URL = 'https://pengulingo-api.onrender.com';
+  // const ROOT_URL = 'http://localhost:9090';
 
   return {
     all: [],
