@@ -50,7 +50,7 @@ function WaitingRoom(props) {
     await changeGameStatus(roomID, { status: 'CLOSED' });
   };
   const codeDiv = () => {
-    return gameInfo?.players.length === 4 ? (
+    return gameInfo?.players.length >= 4 ? (
       <div className="code">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         {isAdmin ? (

@@ -353,6 +353,7 @@ input.enter-name.not-empty {
 }
 
 // LANDING_PAGE
+
 .landing-page {
   button {
     background: none;
@@ -789,6 +790,7 @@ input.enter-name.not-empty {
 }
 
 //LOADING_SCREEN
+
 .loading-screen {
   @keyframes popAnimation {
     0% {
@@ -900,6 +902,7 @@ input.enter-name.not-empty {
 }
 
 //CHOOSE_GAME
+
 .choose-game {
 
   body,
@@ -1005,219 +1008,6 @@ input.enter-name.not-empty {
     bottom: 0;
   }
 }
-
-//CHOOSE_GAME
-.choose-game {
-
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .choose-game {
-    background-color: white;
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
-
-  .background-choose-game {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .background-choose-game .background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .background-choose-game .Pink-Background {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 20%;
-    left: 0;
-  }
-
-  .games,
-  .players,
-  .pengu {
-    z-index: 2;
-  }
-
-  .games {
-    position: absolute;
-    top: 12%;
-    /* Position 20% from the top */
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /* Center the items vertically */
-    transform: scale(0.6);
-    gap: 150px;
-    /* Add space between the game images */
-  }
-
-  .pengu {
-    position: absolute;
-    z-index: 5;
-    transform: scale(0.75);
-    right: 75%;
-    top: 45%;
-  }
-
-  .groceries-description {
-    position: absolute;
-    transform: scale(0.5);
-    z-index: 5;
-    right: 25%;
-    top: 45%;
-  }
-
-  .players {
-    position: absolute;
-    transform: scale(0.7);
-    z-index: 5;
-    bottom: -12%;
-    left: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .select-game {
-    position: absolute;
-    z-index: 5;
-    transform: scale(0.7);
-    top: 15%;
-  }
-
-  .back-button {
-    position: absolute;
-    transform: scale(0.75);
-    z-index: 5;
-    bottom: 0;
-  }
-}
-
-// WAITINGROOM
-
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .choose-game {
-    background-color: white;
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
-
-  .background-choose-game {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .background-choose-game .background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .background-choose-game .Pink-Background {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 20%;
-    left: 0;
-  }
-
-  .games,
-  .players,
-  .pengu {
-    z-index: 2;
-  }
-
-  .games {
-    position: absolute;
-    top: 12%;
-    /* Position 20% from the top */
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /* Center the items vertically */
-    transform: scale(0.6);
-    gap: 150px;
-    /* Add space between the game images */
-  }
-
-  .pengu {
-    position: absolute;
-    z-index: 5;
-    transform: scale(0.75);
-    right: 75%;
-    top: 45%;
-  }
-
-  .groceries-description {
-    position: absolute;
-    transform: scale(0.5);
-    z-index: 5;
-    right: 25%;
-    top: 45%;
-  }
-
-  .players {
-    position: absolute;
-    transform: scale(0.7);
-    z-index: 5;
-    bottom: -12%;
-    left: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .select-game {
-    position: absolute;
-    z-index: 5;
-    transform: scale(0.7);
-    top: 15%;
-  }
-
-  .back-button {
-    position: absolute;
-    transform: scale(0.75);
-    z-index: 5;
-    bottom: 0;
-  }
-
 
 // WAITINGROOM
 .waiting-room-page {
