@@ -17,7 +17,7 @@ function WaitingRoom(props) {
     playerName: '',
     isAdmin: false,
   };
-  console.log('reached waiting room', playerName);
+  console.log('reached waiting', playerName);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   const changeGameStatus = useStore(
     ({ gameSlice }) => gameSlice.changeGameStatus,
@@ -31,7 +31,7 @@ function WaitingRoom(props) {
   });
 
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
-  console.log(gameInfo);
+  console.log('waiting room:', gameInfo);
   if (gameInfo?.status === 'CLOSED') {
     navigate(`/room/${roomID}/1`, {
       state: { playerName, isAdmin },

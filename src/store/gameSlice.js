@@ -14,6 +14,7 @@ export default function createGameSlice(set, get) {
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/getState');
       } catch (error) {
         console.error('Error fetching game state: ', error.message);
+        throw error;
       }
     },
     createRoom: async (data) => {
