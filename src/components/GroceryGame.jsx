@@ -70,15 +70,16 @@ function GroceryGame(props) {
     if (outcome === 'correct') {
       setCorrectCount(correctCount + 1);
       setCurrentCorrect(1);
+      setShowModal(true);
       console.log('sending correct answer:', roomID, playerName);
       await submitAnswer(roomID, { playerName, correct: true });
     } else {
       setCorrectCount(0);
       setCurrentCorrect(-1);
+      setShowModal(true);
       console.log('sending incorrect answer:', roomID, playerName);
       await submitAnswer(roomID, { playerName, correct: false });
     }
-    setShowModal(true);
     setTimeout(() => {
       if (outcome === 'correct') {
         if (currentQuestionIndex < data.questions.length - 1) {
