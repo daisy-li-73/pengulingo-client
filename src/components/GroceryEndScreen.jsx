@@ -50,11 +50,22 @@ function GroceryEndScreen() {
   console.log('game end screen:', gameInfo);
   console.log('game status:', gameInfo.status);
 
+  const [playerIndexByRank, setPlayerIndexByRank] = useState([]);
+  useEffect(() => {
+    if (gameInfo && gameInfo.players) {
+      const updatedPIBR = gameInfo?.ranking?.map((name) => {
+        const playerIndex = gameInfo?.players.findIndex((player) => player.name === name);
+        return playerIndex !== -1 ? playerIndex : null;
+      });
+      setPlayerIndexByRank(updatedPIBR);
+    }
+  }, [gameInfo]);
+
   if (!gameInfo || gameInfo?.status === 'QUIT') {
     navigate('/');
   }
   if (gameInfo?.status === 'OPEN') {
-    navigate(`/room/${roomID}/1`, {
+    navigate(`/room/${roomID}`, {
       state: { playerName, isAdmin },
     });
   }
@@ -84,11 +95,11 @@ function GroceryEndScreen() {
   };
 
   // change for each unique color
-  const playerRankBar = (name, position) => {
+  const playerRankBar = (name, position, playerIndex) => {
     const barheight = (5 - (position + 1)) * 60 + 130;
     return (
       <div className="player-rank-bar">
-        <img src={penguIconOrder[position]} />
+        <img src={penguIconOrder[playerIndex]} />
         <img
           className="ranking-number-img"
           src={rankingNumberOrder[position]}
@@ -100,13 +111,13 @@ function GroceryEndScreen() {
           className="ranking-bar-vertical"
           style={{
             '--bar-height': `${barheight}px`,
-            '--bar-color': `${barColorOrder[position]}`,
+            '--bar-color': `${barColorOrder[playerIndex]}`,
           }}
         />
       </div>
     );
   };
-  const winnerRankBar = (name, position) => {
+  const winnerRankBar = (name, position, playerIndex) => {
     const barheight = (5 - (position + 1)) * 60 + 150;
     return (
       <div className="player-rank-bar" id="winner">
@@ -115,7 +126,7 @@ function GroceryEndScreen() {
           <img src={crown} className="mini-icon" />
           <div>
             <span className="winner-outline" />
-            <img src={penguIconOrder[position]} id="winner" />
+            <img src={penguIconOrder[playerIndex]} id="winner" />
           </div>
         </div>
         <img
@@ -129,7 +140,7 @@ function GroceryEndScreen() {
           className="ranking-bar-vertical"
           style={{
             '--bar-height': `${barheight}px`,
-            '--bar-color': `${barColorOrder[position]}`,
+            '--bar-color': `${barColorOrder[playerIndex]}`,
           }}
         />
       </div>
@@ -141,10 +152,10 @@ function GroceryEndScreen() {
       <PageTopBar />
       <h1>{gameInfo.ranking[0]} Wins!</h1>
       <div className="all-ranking-bars">
-        {playerRankBar(gameInfo.ranking[3], 3)}
-        {playerRankBar(gameInfo.ranking[2], 2)}
-        {winnerRankBar(gameInfo.ranking[0], 0)}
-        {playerRankBar(gameInfo.ranking[1], 1)}
+        {playerRankBar(gameInfo.ranking[3], 3, playerIndexByRank[3])}
+        {playerRankBar(gameInfo.ranking[2], 2, playerIndexByRank[2])}
+        {winnerRankBar(gameInfo.ranking[0], 0, playerIndexByRank[0])}
+        {playerRankBar(gameInfo.ranking[1], 1, playerIndexByRank[1])}
       </div>
       {/* {gameInfo.ranking.map((name, rank) => (
         <p>

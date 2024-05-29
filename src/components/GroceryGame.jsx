@@ -106,7 +106,7 @@ function GroceryGame(props) {
       }
       setCurrentCorrect(0);
       setShowModal(false);
-    }, 3000);
+    }, 500);
   };
   if (gameInfo?.status === 'GAME_OVER') {
     navigate(`/room/${roomID}/1/end`, {
