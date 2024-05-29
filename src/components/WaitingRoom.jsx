@@ -14,9 +14,9 @@ function WaitingRoom(props) {
   const location = useLocation();
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
-  const { isAdmin, playerNumber } = location.state || {
+  const { playerName, isAdmin } = location.state || {
+    playerName: '',
     isAdmin: false,
-    playerNumber: 0,
   };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   const changeGameStatus = useStore(
@@ -30,7 +30,7 @@ function WaitingRoom(props) {
   console.log(gameInfo);
   if (gameInfo?.status === 'CLOSED') {
     navigate(`/room/${roomID}/1`, {
-      state: { playerNumber, isAdmin },
+      state: { playerName, isAdmin },
     });
   }
   const player1Name = gameInfo?.players?.[0]?.name || '';
@@ -72,7 +72,7 @@ function WaitingRoom(props) {
       </div>
     );
   };
-  const playerBar = (color, colorborder, playerName, left) => {
+  const playerBar = (color, colorborder, pName, left) => {
     let radiusleft, radiusright;
     if (left) {
       radiusleft = 50;
@@ -91,8 +91,8 @@ function WaitingRoom(props) {
           '--radius-right': `${radiusright}px`,
         }}
       >
-        {playerName ? (
-          <p className="playername-text">{playerName}</p>
+        {pName ? (
+          <p className="playername-text">{pName}</p>
         ) : (
           <div className="loading-icon-image">
             <img

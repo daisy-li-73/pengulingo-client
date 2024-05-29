@@ -22,10 +22,12 @@ function JoinGame(props) {
   const onJoinGameClick = async () => {
     try {
       const response = await joinRoom({
-        roomKey, playerInfo: { name, host: false },
+        roomKey,
+        playerInfo: { name, host: false },
       });
       console.log(response);
-      navigate(`/room/${response.data._id}`, { state: { playerNumber: response.data.players.length - 1, isAdmin: false } });
+      // navigate(`/room/${response.data._id}`, { state: { playerNumber: response.data.players.length - 1, isAdmin: false } });
+      navigate(`/room/${response.data._id}`, { state: { playerName: name, isAdmin: false } });
     } catch (error) {
       console.log('Error joining room:', error);
       toast.error('Error 404: Room is full or room doesn\'t exist!');

@@ -54,7 +54,7 @@ export default function createGameSlice(set, get) {
         return error.message;
       }
     },
-    submitAnswer: async (id, data) => {
+    submitAnswer: async (id, data) => { // roomid, {playerName: , correct: }
       try {
         const response = await axios.post(`${ROOT_URL}/rooms/${id}/submissions`, data);
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/submitAnswer');

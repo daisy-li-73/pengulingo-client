@@ -10,6 +10,7 @@ import WaitingRoom from './WaitingRoom';
 import ChooseGame from './ChooseGame';
 import 'react-toastify/dist/ReactToastify.css';
 import GroceryGame from './GroceryGame';
+import GroceryEndScreen from './GroceryEndScreen';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
@@ -32,6 +33,10 @@ function App() {
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
+          <Route
+            path="/room/:roomID/:gameID/end"
+            element={<GroceryEndScreen />}
+          />
           <Route path="*" element={<FallBack />} />
         </Routes>
         <ToastContainer />

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import data from '../data.json';
+import useStore from '../store';
 import PageTopBar from './PageTopBar';
 import pengushopping from '../img/pengu_shopping.png';
 import broccoli from '../img/broccoli.png';
@@ -42,24 +43,41 @@ function GroceryGame(props) {
   const { roomID } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAdmin, playerNumber } = location.state || {
+  const submitAnswer = useStore(({ gameSlice }) => gameSlice.submitAnswer);
+  const { playerName, isAdmin } = location.state || {
+    playerName: '',
     isAdmin: false,
-    playerNumber: 0,
   };
+  const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  const changeGameStatus = useStore(
+    ({ gameSlice }) => gameSlice.changeGameStatus,
+  );
+  useEffect(() => {
+    getState(roomID);
+    // }, []);
+  });
+  const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
+  console.log('in grocery game:', gameInfo);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [currentCorrect, setCurrentCorrect] = useState(0); // -1:incorrect, 0: nothing, 1:correct
   const [showModal, setShowModal] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(false);
 
-  const handleAnswerClick = (outcome) => {
+  const handleAnswerClick = async (outcome) => {
     console.log('outcome', outcome);
     if (outcome === 'correct') {
       setCorrectCount(correctCount + 1);
       setCurrentCorrect(1);
+      await submitAnswer({ roomID, playerInfo: { playerName, correct: true } });
     } else {
       setCorrectCount(0);
       setCurrentCorrect(-1);
+      await submitAnswer({
+        roomID,
+        playerInfo: { playerName, correct: false },
+      });
     }
     setShowModal(true);
     setTimeout(() => {
@@ -76,11 +94,12 @@ function GroceryGame(props) {
       setShowModal(false);
     }, 3000);
   };
-  // find a way to update scores in live time - setCorrectCount only really updates after the handleAnswerClick
-
+  if (gameInfo?.status === 'GAME_OVER') {
+    navigate(`/room/${roomID}/1/end`, {
+      state: { playerName, isAdmin },
+    });
+  }
   const uponEnd = () => {
-    // send final score
-    console.log('final score:', correctCount);
     return (
       <div className="gamefinished-screen">
         <div className="game-finished-waitingscreen">
