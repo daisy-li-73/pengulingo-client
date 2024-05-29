@@ -53,8 +53,10 @@ function GroceryGame(props) {
     ({ gameSlice }) => gameSlice.changeGameStatus,
   );
   useEffect(() => {
-    getState(roomID);
-    // }, []);
+    const timeoutId = setTimeout(() => {
+      getState(roomID);
+    }, 500);
+    return () => clearTimeout(timeoutId);
   });
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('in grocery game:', gameInfo);

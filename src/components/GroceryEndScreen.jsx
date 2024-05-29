@@ -12,7 +12,6 @@ function GroceryEndScreen() {
     playerName: '',
     isAdmin: false,
   };
-  const submitAnswer = useStore(({ gameSlice }) => gameSlice.submitAnswer);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   useEffect(() => {
     getState(roomID);
