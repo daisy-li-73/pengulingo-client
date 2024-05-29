@@ -44,9 +44,10 @@ function GroceryGame(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const submitAnswer = useStore(({ gameSlice }) => gameSlice.submitAnswer);
-  const { playerName, isAdmin } = location.state || {
+  const { playerName, isAdmin, playerNumber } = location.state || {
     playerName: '',
     isAdmin: false,
+    playerNumber: -1,
   };
   console.log('reached game', playerName);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
@@ -96,7 +97,7 @@ function GroceryGame(props) {
   };
   if (gameInfo?.status === 'GAME_OVER') {
     navigate(`/room/${roomID}/1/end`, {
-      state: { playerName, isAdmin },
+      state: { playerName, isAdmin, playerNumber },
     });
   }
   const uponEnd = () => {
