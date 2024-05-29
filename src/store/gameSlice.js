@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default function createGameSlice(set, get) {
-  const ROOT_URL = 'https://pengulingo-api.onrender.com';
-  // const ROOT_URL = 'http://localhost:9090';
+  // const ROOT_URL = 'https://pengulingo-api.onrender.com';
+  const ROOT_URL = 'http://localhost:9090';
 
   return {
     all: [],
@@ -58,6 +58,7 @@ export default function createGameSlice(set, get) {
     },
     submitAnswer: async (id, data) => { // roomid, {playerName: , correct: }
       try {
+        console.log('slice: ', data);
         const response = await axios.post(`${ROOT_URL}/rooms/${id}/submissions`, data);
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/submitAnswer');
       } catch (error) {
