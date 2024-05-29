@@ -3,6 +3,21 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PageTopBar from '../PageTopBar';
+import penguLoadingScreen from './images/pengu-loading-screen.png';
+import balloonGreen from './images/balloon-green.png';
+import balloonPink from './images/balloon-pink.png';
+import balloonYellow from './images/balloon-yellow.png';
+import balloonRed from './images/balloon-red.png';
+import globe from './images/globe.png';
+import joingamepng from './images/join-game.png';
+import joingamehoverpng from './images/join-game-hover.png';
+import hostgamepng from './images/host-game.png';
+import hostgamehoverpng from './images/host-game-hover.png';
+import displaytextpng from './images/display-text.png';
+import french from './images/French.png';
+import chinese from './images/Chinese.png';
+import italian from './images/Italian.png';
+import spanish from './images/Spanish.png';
 
 function LandingScreen() {
   const [language, setLanguage] = useState('French');
@@ -16,34 +31,34 @@ function LandingScreen() {
       <PageTopBar />
       <div className="image-container">
         <div className="pengu-container">
-          <img src="src/components/landing-page/images/pengu-loading-screen.png" className="pengu" />
+          <img src={penguLoadingScreen} className="pengu" />
           <div className="balloons">
-            <img src="src/components/landing-page/images/balloon-green.png" className="balloon-green" />
-            <img src="src/components/landing-page/images/balloon-pink.png" className="balloon-pink" />
-            <img src="src/components/landing-page/images/balloon-yellow.png" className="balloon-yellow" />
-            <img src="src/components/landing-page/images/balloon-red.png" className="balloon-red" />
+            <img src={balloonGreen} className="balloon-green" />
+            <img src={balloonPink} className="balloon-pink" />
+            <img src={balloonYellow} className="balloon-yellow" />
+            <img src={balloonRed} className="balloon-red" />
           </div>
         </div>
       </div>
       <div className="globe-container">
-        <img src="src/components/landing-page/images/globe.png" alt="globe" />
+        <img src={globe} alt="globe" />
       </div>
       <div className="join-game">
-        <NavLink to="/joingame"><img src="src/components/landing-page/images/join-game.png" alt="Join Game" className="join-game-img" /></NavLink>
-        <NavLink to="/joingame"><img src="src/components/landing-page/images/join-game-hover.png" alt="Join Hover" className="join-game-hover" /></NavLink>
+        <NavLink to="/joingame"><img src={joingamepng} alt="Join Game" className="join-game-img" /></NavLink>
+        <NavLink to="/joingame"><img src={joingamehoverpng} alt="Join Hover" className="join-game-hover" /></NavLink>
       </div>
       <div className="host-game">
-        <NavLink to="/creategame"><img src="src/components/landing-page/images/host-game.png" alt="Host Game" className="host-game-img" /></NavLink>
-        <NavLink to="/creategame"><img src="src/components/landing-page/images/host-game-hover.png" alt="Host Hover" className="host-game-hover" /></NavLink>
+        <NavLink to="/creategame"><img src={hostgamepng} alt="Host Game" className="host-game-img" /></NavLink>
+        <NavLink to="/creategame"><img src={hostgamehoverpng} alt="Host Hover" className="host-game-hover" /></NavLink>
       </div>
       <div className="text">
-        <img src="src/components/landing-page/images/display-text.png" alt="display-text" />
+        <img src={displaytextpng} alt="display-text" />
       </div>
       <div className="language-selector">
-        <button className={language === 'French' ? 'selected' : ''} onClick={() => handleLanguageChange('French')}><img src="src/components/landing-page/images/French.png" alt="French" /></button>
-        <button className={language === 'Chinese' ? 'selected' : ''} onClick={() => handleLanguageChange('Chinese')}><img src="src/components/landing-page/images/Chinese.png" alt="Chinese" /></button>
-        <button className={language === 'Italian' ? 'selected' : ''} onClick={() => handleLanguageChange('Italian')}><img src="src/components/landing-page/images/Italian.png" alt="Italian" /></button>
-        <button className={language === 'Spanish' ? 'selected' : ''} onClick={() => handleLanguageChange('Spanish')}><img src="src/components/landing-page/images/Spanish.png" alt="Spanish" /></button>
+        <button className={language === 'French' ? 'selected' : ''} onClick={() => handleLanguageChange('French')}><img src={french} alt="French" /></button>
+        <button className={language === 'Chinese' ? 'selected' : ''} onClick={() => handleLanguageChange('Chinese')}><img src={chinese} alt="Chinese" /></button>
+        <button className={language === 'Italian' ? 'selected' : ''} onClick={() => handleLanguageChange('Italian')}><img src={italian} alt="Italian" /></button>
+        <button className={language === 'Spanish' ? 'selected' : ''} onClick={() => handleLanguageChange('Spanish')}><img src={spanish} alt="Spanish" /></button>
       </div>
     </div>
   );
