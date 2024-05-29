@@ -12,6 +12,7 @@ import ChooseGame from './ChooseGame';
 import 'react-toastify/dist/ReactToastify.css';
 import GroceryGame from './GroceryGame';
 import GroceryEndScreen from './GroceryEndScreen';
+// import Test from './Test';
 
 function FallBack(props) {
   return <div>URL Not Found</div>;
@@ -39,6 +40,7 @@ function App() {
             element={<GroceryEndScreen />}
           />
           <Route path="*" element={<FallBack />} />
+          {/* <Route path="/room/:roomID/test" element={<Test />} /> */}
         </Routes>
         <ToastContainer />
       </div>

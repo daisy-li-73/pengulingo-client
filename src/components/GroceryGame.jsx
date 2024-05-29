@@ -49,9 +49,6 @@ function GroceryGame(props) {
     isAdmin: false,
   };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
-  const changeGameStatus = useStore(
-    ({ gameSlice }) => gameSlice.changeGameStatus,
-  );
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       getState(roomID);
