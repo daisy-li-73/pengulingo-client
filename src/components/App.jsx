@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -14,6 +13,7 @@ import ChooseGame from './choose-game/choose-game';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-toastify/dist/ReactToastify.css';
 import GroceryGame from './GroceryGame';
+import GoGoGroceries from './go-go-groceries/groceries-background';
 import GroceryEndScreen from './GroceryEndScreen';
 import Test from './Test';
 
@@ -41,6 +41,7 @@ function App() {
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
+          <Route path="/gogogroceries" element={<GoGoGroceries />} />
           <Route
             path="/room/:roomID/:gameID/end"
             element={<GroceryEndScreen />}

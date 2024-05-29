@@ -22,8 +22,8 @@ function CreateGame(props) {
       const response = await createRoom({
         creator, numQuestions,
       });
-      // navigate(`/room/${response.data._id}`, { state: { playerNumber: 0, isAdmin: true } });
-      navigate(`/room/${response.data._id}/test`);
+      navigate(`/room/${response.data._id}`, { state: { playerNumber: 0, isAdmin: true } });
+      // navigate(`/room/${response.data._id}/test`);
     } catch (error) {
       console.log('Error creating room:', error);
     }
