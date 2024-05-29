@@ -1,0 +1,41 @@
+body {
+    background-color: darkgray;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    display: flex; /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center; /* Add this */
+    height: 100vh; /* Add this to ensure the body takes the full viewport height */
+}
+
+.shelves {
+    transform: scale(0.75);
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    right: 12.5%;
+    z-index: 2;
+}
+
+.checkered-ground {
+    position: absolute;
+    width: 100%;
+    bottom: -5%;
+    right: 0;
+}
+
+.pengu {
+    position: absolute;
+    transform: scale(0.6);
+    top: 50%;
+    right: 1%;
+    z-index: 3;
+}
+
+.lights {
+    position: absolute;
+    width: 100%;
+    top: 7.5%;
+    right: 1%;
+}

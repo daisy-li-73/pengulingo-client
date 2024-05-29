@@ -1007,7 +1007,6 @@ input.enter-name.not-empty {
 }
 
 // WAITINGROOM
-
 .waiting-room-page {
   height: 100vh;
   position: relative;
@@ -1019,6 +1018,46 @@ input.enter-name.not-empty {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+}
+
+//GO_GROCERIES_BACKGROUND
+.groceries-background-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .shelves {
+      transform: scale(0.75);
+      position: absolute;
+      top: 8%;
+      width: 100%;
+      right: 12.5%;
+      z-index: 2;
+  }
+
+  .checkered-ground {
+      position: absolute;
+      width: 100%;
+      bottom: -5%;
+      right: 0;
+  }
+
+  .pengu {
+      position: absolute;
+      transform: scale(0.6);
+      top: 50%;
+      right: 0;
+      z-index: 3;
+  }
+
+  .lights {
+      position: absolute;
+      width: 100%;
+      top: 12%;
+      right: 1%;
+  }
 }
 
 .foreground-waitingroom {
