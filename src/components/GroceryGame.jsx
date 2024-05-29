@@ -48,6 +48,7 @@ function GroceryGame(props) {
     playerName: '',
     isAdmin: false,
   };
+  console.log('reached game', playerName);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -69,16 +70,16 @@ function GroceryGame(props) {
     if (outcome === 'correct') {
       setCorrectCount(correctCount + 1);
       setCurrentCorrect(1);
-      await submitAnswer({ roomID, playerInfo: { playerName, correct: true } });
+      setShowModal(true);
+      console.log('sending correct answer:', roomID, playerName);
+      await submitAnswer(roomID, { playerName, correct: true });
     } else {
       setCorrectCount(0);
       setCurrentCorrect(-1);
-      await submitAnswer({
-        roomID,
-        playerInfo: { playerName, correct: false },
-      });
+      setShowModal(true);
+      console.log('sending incorrect answer:', roomID, playerName);
+      await submitAnswer(roomID, { playerName, correct: false });
     }
-    setShowModal(true);
     setTimeout(() => {
       if (outcome === 'correct') {
         if (currentQuestionIndex < data.questions.length - 1) {

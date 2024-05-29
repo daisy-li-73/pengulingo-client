@@ -12,6 +12,7 @@ function GroceryEndScreen() {
     playerName: '',
     isAdmin: false,
   };
+  console.log('reached end screen:', playerName, isAdmin);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -21,36 +22,40 @@ function GroceryEndScreen() {
   });
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('in game end screen', gameInfo);
-
-  const [roomDeleted, setRoomDeleted] = useState(false);
+  if (!gameInfo) {
+    navigate('/');
+  } // double check that this works
   if (gameInfo?.status === 'OPEN') {
     navigate(`/room/${roomID}/1`, {
       state: { playerName, isAdmin },
     });
-  }
-  if (roomDeleted) {
-    navigate('/');
   }
   const changeGameStatus = useStore(
     ({ gameSlice }) => gameSlice.changeGameStatus,
   );
   const onResetClick = async () => {
     await changeGameStatus(roomID, { status: 'OPEN' });
-  };
+  }; // if is open, reset ranks on backend
   const onDeleteClick = async () => {
     await changeGameStatus(roomID, { status: 'QUIT' });
-    setRoomDeleted(true);
+    navigate('/');
   };
   const adminButtons = () => {
-    <div className="endscreen-buttons">
-      <button type="button" onClick={onResetClick}>Restart</button>
-      <button type="button" onClick={onDeleteClick}>Delete</button>
-    </div>;
+    return (
+      <div className="endscreen-buttons">
+        <button type="button" onClick={onResetClick}>
+          Restart
+        </button>
+        <button type="button" onClick={onDeleteClick}>
+          Delete
+        </button>
+      </div>
+    );
   };
 
   return (
     <div className="grocery-game-endscreen">
-      {gameInfo.players.map((name, rank) => (
+      {gameInfo.ranking.map((name, rank) => (
         <p>
           {name} : {rank}
         </p>
