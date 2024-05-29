@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default function createGameSlice(set, get) {
-  const ROOT_URL = 'https://pengulingo-api.onrender.com';
-  // const ROOT_URL = 'http://localhost:9090';
+  // const ROOT_URL = 'https://pengulingo-api.onrender.com';
+  const ROOT_URL = 'http://localhost:9090';
 
   return {
     all: [],
@@ -30,7 +30,7 @@ export default function createGameSlice(set, get) {
       // PUT
       // takes in updated data (could include the ID of the post to update in the post object or add a separate parameter
       try {
-        const response = await axios.put(`${ROOT_URL}/rooms/${id}`, status);
+        const response = await axios.patch(`${ROOT_URL}/rooms/${id}`, status);
         set(({ gameSlice }) => { gameSlice.current = response.data; }, false, 'rooms/changeGameStatus');
       } catch (error) {
         console.error('Error updating game status: ', error.message);

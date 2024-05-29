@@ -47,7 +47,7 @@ function WaitingRoom(props) {
     '--bg-url': `url("${backgroundUrl}")`,
   };
   const onStartGameClick = async () => {
-    await changeGameStatus(roomID, 'CLOSED');
+    await changeGameStatus(roomID, { status: 'CLOSED' });
   };
   const codeDiv = () => {
     return gameInfo?.players.length === 4 ? (

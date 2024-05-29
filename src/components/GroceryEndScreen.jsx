@@ -32,10 +32,10 @@ function GroceryEndScreen() {
     ({ gameSlice }) => gameSlice.changeGameStatus,
   );
   const onResetClick = async () => {
-    await changeGameStatus(roomID, 'OPEN');
+    await changeGameStatus(roomID, { status: 'OPEN' });
   };
   const onDeleteClick = async () => {
-    await changeGameStatus(roomID, 'QUIT');
+    await changeGameStatus(roomID, { status: 'QUIT' });
     setRoomDeleted(true);
   };
   const adminButtons = () => {
