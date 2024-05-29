@@ -14,7 +14,10 @@ function GroceryEndScreen() {
   };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   useEffect(() => {
-    getState(roomID);
+    const timeoutId = setTimeout(() => {
+      getState(roomID);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
   });
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('in game end screen', gameInfo);
