@@ -14,16 +14,24 @@ function WaitingRoom(props) {
   const location = useLocation();
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
-  const { isAdmin, playerNumber } = location.state || { isAdmin: false, playerNumber: 0 };
+  const { isAdmin, playerNumber } = location.state || {
+    isAdmin: false,
+    playerNumber: 0,
+  };
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
-  const changeGameStatus = useStore(({ gameSlice }) => gameSlice.changeGameStatus);
+  const changeGameStatus = useStore(
+    ({ gameSlice }) => gameSlice.changeGameStatus,
+  );
   useEffect(() => {
     getState(roomID);
-  }, []); // remove this for constant updates
+    // }, []);
+  });
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
-  if (gameInfo?.status === 'CLOSEd') {
-    navigate(`/room/${gameInfo.data._id}/1`, { state: { playerNumber, isAdmin } });
+  if (gameInfo?.status === 'CLOSED') {
+    navigate(`/room/${roomID}/1`, {
+      state: { playerNumber, isAdmin },
+    });
   }
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';
@@ -42,7 +50,9 @@ function WaitingRoom(props) {
       <div className="code">
         <img src={pengu} alt="pengu logo" className="pengu-logo" />
         {isAdmin ? (
-          <button type="button" onClick={onStartGameClick}>Let&apos;s Go!</button>
+          <button type="button" onClick={onStartGameClick}>
+            Let&apos;s Go!
+          </button>
         ) : (
           <p>Waiting on host...</p>
         )}
