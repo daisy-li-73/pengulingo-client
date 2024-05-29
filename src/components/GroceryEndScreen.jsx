@@ -21,7 +21,7 @@ function GroceryEndScreen() {
   console.log('in game end screen', gameInfo);
 
   const [roomDeleted, setRoomDeleted] = useState(false);
-  if (gameInfo?.status === 'CLOSED') {
+  if (gameInfo?.status === 'OPEN') {
     navigate(`/room/${roomID}/1`, {
       state: { playerName, isAdmin },
     });
@@ -33,7 +33,7 @@ function GroceryEndScreen() {
     ({ gameSlice }) => gameSlice.changeGameStatus,
   );
   const onResetClick = async () => {
-    await changeGameStatus(roomID, 'CLOSED');
+    await changeGameStatus(roomID, 'OPEN');
   };
   const onDeleteClick = async () => {
     await changeGameStatus(roomID, 'QUIT');

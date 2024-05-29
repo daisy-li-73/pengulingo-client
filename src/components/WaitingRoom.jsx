@@ -22,10 +22,14 @@ function WaitingRoom(props) {
   const changeGameStatus = useStore(
     ({ gameSlice }) => gameSlice.changeGameStatus,
   );
+
   useEffect(() => {
-    getState(roomID);
-    // }, []);
+    const timeoutId = setTimeout(() => {
+      getState(roomID);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
   });
+
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log(gameInfo);
   if (gameInfo?.status === 'CLOSED') {
