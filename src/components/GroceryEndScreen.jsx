@@ -28,37 +28,44 @@ function GroceryEndScreen() {
   const navigate = useNavigate();
   const { playerName, isAdmin } = location.state || {
     playerName: '',
-    isAdmin: true,
+    isAdmin: false,
   };
   console.log('reached end screen:', playerName, isAdmin, roomID);
-  // const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  const getState = useStore(({ gameSlice }) => gameSlice.getState);
 
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     getState(roomID);
-  //   }, 1000);
-  //   return () => clearTimeout(timeoutId);
-  // });
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      try {
+        console.log('trying to get');
+        await getState(roomID);
+      } catch (error) {
+        console.log('caught no game');
+        navigate('/');
+      }
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  });
 
-  // const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
-  // console.log('game end screen:', gameInfo);
+  const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
+  console.log('game end screen:', gameInfo);
+  console.log('game status:', gameInfo.status);
 
-  // if (!gameInfo) {
-  //   navigate('/');
-  // } // double check that this works
-  // if (gameInfo?.status === 'OPEN') {
-  //   navigate(`/room/${roomID}/1`, {
-  //     state: { playerName, isAdmin },
-  //   });
-  // }
-  // const changeGameStatus = useStore(
-  //   ({ gameSlice }) => gameSlice.changeGameStatus,
-  // );
+  if (!gameInfo || gameInfo?.status === 'QUIT') {
+    navigate('/');
+  }
+  if (gameInfo?.status === 'OPEN') {
+    navigate(`/room/${roomID}/1`, {
+      state: { playerName, isAdmin },
+    });
+  }
+  const changeGameStatus = useStore(
+    ({ gameSlice }) => gameSlice.changeGameStatus,
+  );
   const onResetClick = async () => {
-    // await changeGameStatus(roomID, { status: 'OPEN' });
+    await changeGameStatus(roomID, { status: 'OPEN' });
   }; // if is open, reset ranks on backend
   const onDeleteClick = async () => {
-    // await changeGameStatus(roomID, { status: 'QUIT' });
+    await changeGameStatus(roomID, { status: 'QUIT' });
     navigate('/');
   };
   const adminButtons = () => {
@@ -81,7 +88,7 @@ function GroceryEndScreen() {
     const barheight = (5 - (position + 1)) * 60 + 130;
     return (
       <div className="player-rank-bar">
-        <img src={greenpengu} />
+        <img src={penguIconOrder[position]} />
         <img
           className="ranking-number-img"
           src={rankingNumberOrder[position]}
@@ -107,8 +114,8 @@ function GroceryEndScreen() {
         <div className="winner-icon">
           <img src={crown} className="mini-icon" />
           <div>
-            <dot className="winner-outline" />
-            <img src={greenpengu} id="winner" />
+            <span className="winner-outline" />
+            <img src={penguIconOrder[position]} id="winner" />
           </div>
         </div>
         <img
@@ -128,29 +135,23 @@ function GroceryEndScreen() {
       </div>
     );
   };
-  const ranking = ['Daisy', 'Selena', 'Jamie', 'Luke'];
 
   return (
     <div className="grocery-game-endscreen">
       <PageTopBar />
-      {/* <h1>{gameInfo.ranking[0]} Wins!</h1> */}
-      <h1>{ranking[0]} Wins!</h1>
+      <h1>{gameInfo.ranking[0]} Wins!</h1>
       <div className="all-ranking-bars">
-        {/* {playerRankBar(gameInfo.ranking[3])}
-        {playerRankBar(gameInfo.ranking[2])}
-        {playerRankBar(gameInfo.ranking[0])}
-        {playerRankBar(gameInfo.ranking[1])} */}
-        {playerRankBar(ranking[3], 3)}
-        {playerRankBar(ranking[2], 2)}
-        {winnerRankBar(ranking[0], 0)}
-        {playerRankBar(ranking[1], 1)}
+        {playerRankBar(gameInfo.ranking[3], 3)}
+        {playerRankBar(gameInfo.ranking[2], 2)}
+        {winnerRankBar(gameInfo.ranking[0], 0)}
+        {playerRankBar(gameInfo.ranking[1], 1)}
       </div>
       {/* {gameInfo.ranking.map((name, rank) => (
         <p>
           {name} : {rank}
         </p>
       ))} */}
-      {true && adminButtons()}
+      {isAdmin && adminButtons()}
     </div>
   );
 }
