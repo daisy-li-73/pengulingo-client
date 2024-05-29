@@ -13,11 +13,11 @@ function WaitingRoom(props) {
   const { roomID } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
   const { playerName, isAdmin } = location.state || {
     playerName: '',
     isAdmin: false,
   };
+  console.log('reached waiting room', playerName);
   const getState = useStore(({ gameSlice }) => gameSlice.getState);
   const changeGameStatus = useStore(
     ({ gameSlice }) => gameSlice.changeGameStatus,

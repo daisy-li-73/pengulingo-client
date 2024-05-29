@@ -13,7 +13,7 @@ import useStore from '../store';
 function CreateGame(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [creator, setCreator] = useState();
+  const [creator, setCreator] = useState('');
   const createRoom = useStore(({ gameSlice }) => gameSlice.createRoom);
   const numQuestions = 5;
 
@@ -22,7 +22,7 @@ function CreateGame(props) {
       const response = await createRoom({
         creator, numQuestions,
       });
-      navigate(`/room/${response.data._id}`, { state: { playerNumber: 0, isAdmin: true } });
+      navigate(`/room/${response.data._id}`, { state: { playerName: creator, isAdmin: true } });
       // navigate(`/room/${response.data._id}/test`);
     } catch (error) {
       console.log('Error creating room:', error);
