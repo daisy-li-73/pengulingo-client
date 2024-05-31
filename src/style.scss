@@ -1448,6 +1448,8 @@ input.enter-name.not-empty {
   .ranking-number-img {
     position: absolute;
     bottom: var(--bar-height);
+    display: flex;
+    flex-direction: column;
   }
 }
 

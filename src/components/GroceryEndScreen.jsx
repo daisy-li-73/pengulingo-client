@@ -54,7 +54,9 @@ function GroceryEndScreen() {
   useEffect(() => {
     if (gameInfo && gameInfo.players) {
       const updatedPIBR = gameInfo?.ranking?.map((name) => {
-        const playerIndex = gameInfo?.players.findIndex((player) => player.name === name);
+        const playerIndex = gameInfo?.players.findIndex(
+          (player) => player.name === name,
+        );
         return playerIndex !== -1 ? playerIndex : null;
       });
       setPlayerIndexByRank(updatedPIBR);
@@ -100,13 +102,17 @@ function GroceryEndScreen() {
     return (
       <div className="player-rank-bar">
         <img src={penguIconOrder[playerIndex]} />
-        <img
+        <div
           className="ranking-number-img"
-          src={rankingNumberOrder[position]}
           style={{
-            '--bar-height': `${barheight - 80}px`,
+            '--bar-height': `${barheight - 110}px`,
           }}
-        />
+        >
+          <img src={rankingNumberOrder[position]} />
+          <p>
+            <b>{name}</b>
+          </p>
+        </div>
         <span
           className="ranking-bar-vertical"
           style={{
@@ -129,13 +135,18 @@ function GroceryEndScreen() {
             <img src={penguIconOrder[playerIndex]} id="winner" />
           </div>
         </div>
-        <img
+        <div
           className="ranking-number-img"
-          src={rankingNumberOrder[position]}
           style={{
-            '--bar-height': `${barheight - 80}px`,
+            '--bar-height': `${barheight - 110}px`,
           }}
-        />
+        >
+          <img src={rankingNumberOrder[position]} />
+          <p>
+            <b>{name}</b>
+          </p>
+        </div>
+
         <span
           className="ranking-bar-vertical"
           style={{
