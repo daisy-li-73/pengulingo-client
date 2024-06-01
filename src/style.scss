@@ -295,8 +295,8 @@ html {
 }
 
 .enter-name {
-  width: 290px;
-  height: 45px;
+  width: 19%;
+  height: 5.5%;
   padding: 10px;
   border-radius: 50px;
   border: 3px solid #cccccc;
@@ -1008,46 +1008,6 @@ input.enter-name.not-empty {
   overflow: hidden;
 }
 
-//GO_GROCERIES_BACKGROUND
-.groceries-background-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-
-  .shelves {
-    transform: scale(0.75);
-    position: absolute;
-    top: 8%;
-    width: 100%;
-    right: 12.5%;
-    z-index: 2;
-  }
-
-  .checkered-ground {
-    position: absolute;
-    width: 100%;
-    bottom: -5%;
-    right: 0;
-  }
-
-  .pengu {
-    position: absolute;
-    transform: scale(0.6);
-    top: 50%;
-    right: 0;
-    z-index: 3;
-  }
-
-  .lights {
-    position: absolute;
-    width: 100%;
-    top: 12%;
-    right: 1%;
-  }
-}
-
 .foreground-waitingroom {
   display: flex;
   width: 100%;
@@ -1056,8 +1016,8 @@ input.enter-name.not-empty {
 
 .display-all-players {
   width: 100%;
-  padding-top: 20px;
-  height: 95vh;
+  padding-top: 3%;
+  height: 100%;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -1132,7 +1092,7 @@ input.enter-name.not-empty {
 
 .display-players {
   width: 100%;
-  height: fit-content;
+  height: 20%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1143,7 +1103,7 @@ input.enter-name.not-empty {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 62%;
   min-width: 115px;
   width: fit-content;
   background-color: var(--player-color);
@@ -1312,6 +1272,47 @@ input.enter-name.not-empty {
   max-width: 100%;
   height: auto;
   transform: scaleX(-1);
+}
+
+//GO_GROCERIES_BACKGROUND
+
+.groceries-background-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .shelves {
+    transform: scale(0.75);
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    right: 12.5%;
+    z-index: 2;
+  }
+
+  .checkered-ground {
+    position: absolute;
+    width: 100%;
+    bottom: -5%;
+    right: 0;
+  }
+
+  .pengu {
+    position: absolute;
+    transform: scale(0.6);
+    top: 50%;
+    right: 0;
+    z-index: 3;
+  }
+
+  .lights {
+    position: absolute;
+    width: 100%;
+    top: 12%;
+    right: 1%;
+  }
 }
 
 // GAMEENDSCREEN
