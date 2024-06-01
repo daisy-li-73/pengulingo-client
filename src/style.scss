@@ -370,12 +370,10 @@ input.enter-name.not-empty {
   }
 
   .pengu {
-    max-width: 100%;
-    height: auto;
     position: fixed;
-    top: 7%;
-    left: 4%;
-    transform: scale(0.7);
+    width: 28%;
+    top: 25%;
+    left: 10%;
   }
 
   @keyframes scaleInOut {
@@ -457,7 +455,7 @@ input.enter-name.not-empty {
     right: 0;
     transform: translateY(-50%);
     z-index: 1;
-    width: 300px;
+    width: 28%;
     height: auto;
   }
 
@@ -493,7 +491,7 @@ input.enter-name.not-empty {
     right: 0;
     transform: translateY(-50%);
     z-index: 1;
-    width: 300px;
+    width: 28%;
     height: auto;
   }
 
