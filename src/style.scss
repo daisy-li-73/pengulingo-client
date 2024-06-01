@@ -812,11 +812,14 @@ input.enter-name.not-empty {
 
   .pengu {
     position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .pengu-img {
-    height: auto;
-    transform: translate(0%, -23%) scale(0.2);
+    width: 12%;
   }
 
   .text {
