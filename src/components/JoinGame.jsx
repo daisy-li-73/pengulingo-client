@@ -11,23 +11,28 @@ import loadingbuttonbg from '../img/loadingbuttonbg_green.png'; // change this
 import createbuttonbg from '../img/createbuttonbg_green.png'; // change this
 import useStore from '../store';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingScreen from './loading-page/loading-screen';
 
 function JoinGame(props) {
   const navigate = useNavigate();
   const [roomKey, setRoomKey] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
+  const [loadingScreen, setLoadingScreen] = useState(false);
   const joinRoom = useStore(({ gameSlice }) => gameSlice.joinRoom);
 
   const onJoinGameClick = async () => {
     try {
+      setLoadingScreen(true);
       const response = await joinRoom({
         roomKey,
         playerInfo: { name, host: false },
       });
       console.log(response);
       // navigate(`/room/${response.data._id}`, { state: { playerNumber: response.data.players.length - 1, isAdmin: false } });
-      navigate(`/room/${response.data._id}`, { state: { playerName: name, isAdmin: false } });
+      navigate(`/room/${response.data._id}`, {
+        state: { playerName: name, isAdmin: false },
+      });
     } catch (error) {
       console.log('Error joining room:', error);
       toast.error('Error 404: Room is full or room doesn\'t exist!');
@@ -103,7 +108,9 @@ function JoinGame(props) {
       </div>
     );
   };
-  return (
+  return loadingScreen ? (
+    <LoadingScreen />
+  ) : (
     <div className="join-game-page">
       <PageTopBar />
       <div className="foreground">

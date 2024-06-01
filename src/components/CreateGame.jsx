@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PageTopBar from './PageTopBar';
@@ -9,20 +10,26 @@ import loadingbuttonbg from '../img/loadingbuttonbg.png';
 import backbutton from '../img/backbutton.png';
 import createbuttonbg from '../img/createbuttonbg.png';
 import useStore from '../store';
+import LoadingScreen from './loading-page/loading-screen';
 
 function CreateGame(props) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [loadingScreen, setLoadingScreen] = useState(false);
   const [creator, setCreator] = useState('');
   const createRoom = useStore(({ gameSlice }) => gameSlice.createRoom);
   const numQuestions = 5;
 
   const onCreateGameClick = async () => {
     try {
+      setLoadingScreen(true);
       const response = await createRoom({
-        creator, numQuestions,
+        creator,
+        numQuestions,
       });
-      navigate(`/room/${response.data._id}`, { state: { playerName: creator, isAdmin: true } });
+      navigate(`/room/${response.data._id}`, {
+        state: { playerName: creator, isAdmin: true },
+      });
       // navigate(`/room/${response.data._id}/test`);
     } catch (error) {
       console.log('Error creating room:', error);
@@ -68,7 +75,9 @@ function CreateGame(props) {
       setLoading(true);
     }
   };
-  return (
+  return loadingScreen ? (
+    <LoadingScreen />
+  ) : (
     <div className="create-game">
       <PageTopBar />
       <div className="foreground">
