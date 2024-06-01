@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import PageTopBar from './PageTopBar';
 import useStore from '../store';
@@ -8,7 +8,6 @@ import loadingcircle from '../img/loading_circle.png';
 import pengu from '../img/pengu_happy.png';
 import admincolorbg from '../img/admin_color_bg.png';
 import playercolorbg from '../img/player_color_bg.png';
-import LetsGo from './lets-go/lets-go';
 
 function WaitingRoom(props) {
   const { roomID } = useParams();
@@ -31,18 +30,13 @@ function WaitingRoom(props) {
     return () => clearTimeout(timeoutId);
   });
 
-  const [letsGo, setLetsGo] = useState(false);
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('waiting room:', gameInfo);
   useEffect(() => {
     if (gameInfo?.status === 'CLOSED') {
-      setLetsGo(true);
-      setTimeout(() => {
-        setLetsGo(false);
-        navigate(`/room/${roomID}/choosegame`, {
-          state: { playerName, isAdmin },
-        });
-      }, 5000);
+      navigate(`/room/${roomID}/choosegame`, {
+        state: { playerName, isAdmin },
+      });
     }
   }, [gameInfo]);
 
@@ -120,7 +114,6 @@ function WaitingRoom(props) {
   };
   return (
     <div className="waiting-room-page" style={bgstyle}>
-      {letsGo && <LetsGo />}
       <PageTopBar />
       <div className="foreground-waitingroom">
         {codeDiv()}

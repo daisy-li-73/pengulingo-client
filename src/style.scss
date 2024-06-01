@@ -372,7 +372,7 @@ input.enter-name.not-empty {
   .pengu {
     position: fixed;
     width: 28%;
-    top: 25%;
+    top: 29%;
     left: 10%;
   }
 
@@ -609,10 +609,10 @@ input.enter-name.not-empty {
     position: absolute;
     width: 100%;
     bottom: 0;
-    z-index: 1;
+    z-index: 11;
   }
 
-  .players {
+  #letsgo.players {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -620,7 +620,8 @@ input.enter-name.not-empty {
     gap: 8%;
     bottom: 0%;
     width: 100%;
-    z-index: 2;
+    z-index: 12;
+    right: 0;
   }
 
   .lights img {
@@ -642,7 +643,8 @@ input.enter-name.not-empty {
     animation: rotateLights2 5s infinite;
   }
 
-  .players img {
+  #letsgo.players img {
+    width: auto;
     height: 100px;
   }
 
@@ -674,7 +676,7 @@ input.enter-name.not-empty {
     }
   }
 
-  .pengu {
+  #letsgo.pengu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -682,21 +684,24 @@ input.enter-name.not-empty {
     height: 100%;
     justify-content: center;
     position: absolute;
-    z-index: 5;
+    z-index: 13;
   }
 
-  .pengu-img {
-    width: 15%;
+  #letsgo.pengu-img {
+    position: relative;
+    width: 17%;
     height: auto;
+    left: 0;
+    top: 0;
   }
 
   .ellipse {
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 125%;
+    height: 120%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 11;
   }
 
   .lets-go-text {
@@ -716,7 +721,7 @@ input.enter-name.not-empty {
     justify-content: space-around;
     width: 100%;
     height: 100%;
-    z-index: 3;
+    z-index: 12;
   }
 
   .red-sparkles,
@@ -998,7 +1003,6 @@ input.enter-name.not-empty {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
   background-image: var(--bg-url);
   background-size: cover;
   background-repeat: no-repeat;

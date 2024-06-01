@@ -33,14 +33,14 @@ function LetsGo() {
         <img src={p3light} className="P3Light" />
         <img src={p4light} className="P4Light" />
       </div>
-      <div className="players">
-        <img src={p1} className="P1" />
-        <img src={p2} className="P2" />
-        <img src={p3} className="P3" />
-        <img src={p4} className="P4" />
+      <div className="players" id="letsgo">
+        <img src={p1} className="P1" id="letsgo" />
+        <img src={p2} className="P2" id="letsgo" />
+        <img src={p3} className="P3" id="letsgo" />
+        <img src={p4} className="P4" id="letsgo" />
       </div>
-      <div className="pengu">
-        <img src={penguhappy} className="pengu-img" />
+      <div className="pengu" id="letsgo">
+        <img src={penguhappy} className="pengu-img" id="letsgo" />
         <div className="lets-go-text">
           <img src={letsgopng} className="lets-go-img" />
         </div>
