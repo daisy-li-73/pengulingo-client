@@ -29,7 +29,7 @@ function App() {
           <Route path="/letsgo" element={<LetsGo />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/gogogroceries" element={<GoGoGroceries />} />
-          <Route path="/choosegame" element={<ChooseGame />} />
+          <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID" element={<WaitingRoom />} />
           <Route path="/room/:roomID/choosegame" element={<ChooseGame />} />
           <Route path="/room/:roomID/:gameID" element={<GroceryGame />} />
