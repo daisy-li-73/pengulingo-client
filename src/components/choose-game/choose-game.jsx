@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import PageTopBar from '../PageTopBar';
-import backgroundimg from './choose-game-images/background.png';
+import useStore from '../../store';
 import gogogroceriesselected from './choose-game-images/Go-Groceries-Selected.png';
 import directionsunselected from './choose-game-images/Directions-Unselected.png';
 import orderlychaosunselected from './choose-game-images/Orderly-Chaos-Unselected.png';
@@ -17,12 +17,44 @@ import selectgame from './choose-game-images/select-game.png';
 import groceriesdescription from './choose-game-images/groceries-description.png';
 
 function ChooseGame() {
-  const [activeGame, setActiveGame] = useState(null);
+  const [activeGame, setActiveGame] = useState('Go-Groceries');
+  const { roomID } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
+  const { playerName, isAdmin } = location.state || {
+    playerName: '',
+    isAdmin: false,
+  };
+  console.log('reached choose game', playerName);
+  const getState = useStore(({ gameSlice }) => gameSlice.getState);
+  const changeGameStatus = useStore(
+    ({ gameSlice }) => gameSlice.changeGameStatus,
+  );
 
-  const handleGameSelect = (game) => {
-    setActiveGame(game);
-    console.log(game);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      getState(roomID);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  });
+
+  const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
+  console.log('choose game:', gameInfo);
+
+  useEffect(() => {
+    if (gameInfo?.status === 'IN_PROGRESS') {
+      navigate(`/room/${roomID}/1`, {
+        state: { playerName, isAdmin },
+      });
+    }
+  }, [gameInfo]);
+
+  const handleGameSelect = async (game) => {
+    if (isAdmin) {
+      setActiveGame(game);
+      console.log(game);
+      await changeGameStatus(roomID, { status: 'IN_PROGRESS' });
+    }
   };
 
   return (
@@ -33,7 +65,7 @@ function ChooseGame() {
           <img
             src={gogogroceriesselected}
             className="game-image"
-            onClick={() => handleGameSelect('Go-Groceries')}
+            onClick={() => handleGameSelect('Go-Grocieries')}
           />
           <img
             src={directionsunselected}

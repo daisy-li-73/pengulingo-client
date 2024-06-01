@@ -967,14 +967,19 @@ input.enter-name.not-empty {
 
   .players {
     position: absolute;
-    bottom: -15px;
+    bottom: -8%;
     right: 10%;
     white-space: nowrap;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    width: 35%;
   }
 
   .players img {
-    width: 22%;
+    width: 20%;
   }
 
   .select-game {

@@ -105,7 +105,7 @@ function GroceryEndScreen() {
         <div
           className="ranking-number-img"
           style={{
-            '--bar-height': `${barheight - 110}px`,
+            '--bar-height': `${barheight - 125}px`,
           }}
         >
           <img src={rankingNumberOrder[position]} />
@@ -138,7 +138,7 @@ function GroceryEndScreen() {
         <div
           className="ranking-number-img"
           style={{
-            '--bar-height': `${barheight - 110}px`,
+            '--bar-height': `${barheight - 125}px`,
           }}
         >
           <img src={rankingNumberOrder[position]} />
@@ -168,11 +168,6 @@ function GroceryEndScreen() {
         {winnerRankBar(gameInfo.ranking[0], 0, playerIndexByRank[0])}
         {playerRankBar(gameInfo.ranking[1], 1, playerIndexByRank[1])}
       </div>
-      {/* {gameInfo.ranking.map((name, rank) => (
-        <p>
-          {name} : {rank}
-        </p>
-      ))} */}
       {isAdmin && adminButtons()}
     </div>
   );
