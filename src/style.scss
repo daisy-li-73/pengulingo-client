@@ -593,7 +593,7 @@ input.enter-name.not-empty {
 // LETSGO_PAGE
 
 .lets-go-class {
-  background-color: black;
+  z-index: 11;
 
   .container {
     position: absolute;
@@ -602,7 +602,7 @@ input.enter-name.not-empty {
   }
 
   .lights {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -617,6 +617,7 @@ input.enter-name.not-empty {
     justify-content: center;
     align-items: center;
     position: absolute;
+    gap: 8%;
     bottom: 0%;
     width: 100%;
     z-index: 2;
@@ -625,8 +626,8 @@ input.enter-name.not-empty {
   .lights img {
     width: 3vw;
     height: 150vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    padding-left: 5%;
+    padding-right: 5%;
     object-fit: cover;
     transform-origin: bottom center;
   }
@@ -642,8 +643,6 @@ input.enter-name.not-empty {
   }
 
   .players img {
-    margin-left: 3.75vw;
-    margin-right: 3.75vw;
     height: 100px;
   }
 
@@ -677,17 +676,17 @@ input.enter-name.not-empty {
 
   .pengu {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 5;
   }
 
   .pengu-img {
-    width: 175px;
+    width: 15%;
     height: auto;
   }
 
@@ -704,11 +703,6 @@ input.enter-name.not-empty {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
   }
 
   .lets-go-img {
