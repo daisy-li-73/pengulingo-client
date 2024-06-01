@@ -32,6 +32,7 @@ function CreateGame(props) {
       });
       // navigate(`/room/${response.data._id}/test`);
     } catch (error) {
+      setLoadingScreen(false);
       console.log('Error creating room:', error);
     }
   };
