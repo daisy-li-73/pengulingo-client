@@ -34,6 +34,7 @@ function JoinGame(props) {
         state: { playerName: name, isAdmin: false },
       });
     } catch (error) {
+      setLoadingScreen(false);
       console.log('Error joining room:', error);
       toast.error('Error 404: Room is full or room doesn\'t exist!');
     }

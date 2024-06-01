@@ -32,11 +32,14 @@ function WaitingRoom(props) {
 
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('waiting room:', gameInfo);
-  if (gameInfo?.status === 'CLOSED') {
-    navigate(`/room/${roomID}/choosegame`, {
-      state: { playerName, isAdmin },
-    });
-  }
+  useEffect(() => {
+    if (gameInfo?.status === 'CLOSED') {
+      navigate(`/room/${roomID}/choosegame`, {
+        state: { playerName, isAdmin },
+      });
+    }
+  }, [gameInfo]);
+
   const player1Name = gameInfo?.players?.[0]?.name || '';
   const player2Name = gameInfo?.players?.[1]?.name || '';
   const player3Name = gameInfo?.players?.[2]?.name || '';

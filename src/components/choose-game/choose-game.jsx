@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import PageTopBar from '../PageTopBar';
+import LetsGo from '../lets-go/lets-go';
 import useStore from '../../store';
 import gogogroceriesselected from './choose-game-images/Go-Groceries-Selected.png';
 import directionsunselected from './choose-game-images/Directions-Unselected.png';
@@ -18,6 +19,7 @@ import groceriesdescription from './choose-game-images/groceries-description.png
 
 function ChooseGame() {
   const [activeGame, setActiveGame] = useState('Go-Groceries');
+  const [letsGo, setLetsGo] = useState(false);
   const { roomID } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,9 +45,13 @@ function ChooseGame() {
 
   useEffect(() => {
     if (gameInfo?.status === 'IN_PROGRESS') {
-      navigate(`/room/${roomID}/1`, {
-        state: { playerName, isAdmin },
-      });
+      setLetsGo(true);
+      setTimeout(() => {
+        setLetsGo(false);
+        navigate(`/room/${roomID}/1`, {
+          state: { playerName, isAdmin },
+        });
+      }, 5000);
     }
   }, [gameInfo]);
 
@@ -59,6 +65,7 @@ function ChooseGame() {
 
   return (
     <div className="choose-game">
+      {letsGo && <LetsGo />}
       <PageTopBar />
       <div className="background-choose-game">
         <div className="games">
