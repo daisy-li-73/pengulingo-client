@@ -1,5 +1,7 @@
 # Pengulingo - Front-End
 
+[try it out here](https://pengulingo.onrender.com/)
+
 ![Pengulingo homepage](./assets/homepage.png)
 
 _Pengulingo_ is a multiplayer language learning arcade, designed as a mix between multiplayer games like Kahoot or Jackbox, and language learning apps like Duolingo. The goal is to learn languages through applying them in real-life scenarios, and create an interactive space for people to be more immersed in the language.
@@ -11,6 +13,12 @@ This repository is dedicated to the front-end of Pengulingo. We used React.js an
 ## Deployment
 
 _Pengulingo_ is deployed on Render.com at https://pengulingo.onrender.com/.
+
+To deploy, enter the following:
+- Build command: `npm install && npm run build`
+- Publish directory: `dist`
+
+For instructions on how to deploy the API, please see the README in `project-api-dueling-language-arcade`.
 
 ## Setup
 
