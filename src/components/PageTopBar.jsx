@@ -9,7 +9,7 @@ function PageTopBar(props) {
         <NavLink className="pengulingo-title" to="/">
           <p>pengulingo</p>
         </NavLink>
-        {props.language && <img src={frenchflag} alt="language icon" className="language-icon" />}
+        <img src={frenchflag} alt="language icon" className="language-icon" />
       </div>
       <div className="page-top-bar" />
     </div>

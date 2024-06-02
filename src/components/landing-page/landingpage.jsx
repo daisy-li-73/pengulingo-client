@@ -56,9 +56,9 @@ function LandingScreen() {
       </div>
       <div className="language-selector">
         <button className={language === 'French' ? 'selected' : ''} onClick={() => handleLanguageChange('French')}><img src={french} alt="French" /></button>
-        <button className={language === 'Chinese' ? 'selected' : ''} onClick={() => handleLanguageChange('Chinese')}><img src={chinese} alt="Chinese" /></button>
-        <button className={language === 'Italian' ? 'selected' : ''} onClick={() => handleLanguageChange('Italian')}><img src={italian} alt="Italian" /></button>
-        <button className={language === 'Spanish' ? 'selected' : ''} onClick={() => handleLanguageChange('Spanish')}><img src={spanish} alt="Spanish" /></button>
+        <button className={language === 'Chinese' ? 'selected' : ''} onClick={() => handleLanguageChange('Chinese')}><img src={chinese} alt="Chinese" id="unavail" /></button>
+        <button className={language === 'Italian' ? 'selected' : ''} onClick={() => handleLanguageChange('Italian')}><img src={italian} alt="Italian" id="unavail" /></button>
+        <button className={language === 'Spanish' ? 'selected' : ''} onClick={() => handleLanguageChange('Spanish')}><img src={spanish} alt="Spanish" id="unavail" /></button>
       </div>
     </div>
   );

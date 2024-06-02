@@ -361,6 +361,9 @@ input.enter-name.not-empty {
     padding: 0;
     margin: 0;
     cursor: pointer;
+    #unavail {
+      cursor: not-allowed;
+    }
   }
 
   .image-container {
@@ -1307,13 +1310,6 @@ input.enter-name.not-empty {
     right: 0;
     z-index: 3;
   }
-
-  .lights {
-    position: absolute;
-    width: 100%;
-    top: 12%;
-    right: 1%;
-  }
 }
 
 // GAMEENDSCREEN
@@ -1455,6 +1451,63 @@ input.enter-name.not-empty {
     bottom: var(--bar-height);
     display: flex;
     flex-direction: column;
+  }
+  
+  .lights {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: -5%;
+    left: 20%;
+    z-index: 2;
+  }
+
+  .lights img {
+    width: 3vw;
+    height: 150vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    object-fit: cover;
+    transform-origin: bottom center;
+  }
+
+  .lights .P1Light,
+  .lights .P2Light {
+    animation: rotateLights1 5s infinite;
+  }
+
+  .lights .P3Light,
+  .lights .P4Light {
+    animation: rotateLights2 5s infinite;
+  }
+
+  @keyframes rotateLights1 {
+    0% {
+      transform: rotate(-40deg);
+    }
+
+    50% {
+      transform: rotate(40deg);
+    }
+
+    100% {
+      transform: rotate(-40deg);
+    }
+  }
+
+  @keyframes rotateLights2 {
+    0% {
+      transform: rotate(40deg);
+    }
+
+    50% {
+      transform: rotate(-40deg);
+    }
+
+    100% {
+      transform: rotate(40deg);
+    }
   }
 }
 
