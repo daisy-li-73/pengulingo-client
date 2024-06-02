@@ -9,7 +9,10 @@ import useStore from '../store';
 import PageTopBar from './PageTopBar';
 import ProgressBar from './progress-bar/progress-bar';
 
-import pengushopping from '../img/pengu_shopping.png';
+import redpengushopping from '../img/pengu_shopping_red.png';
+import bluepengushopping from '../img/pengu_shopping_blue.png';
+import greenpengushopping from '../img/pengu_shopping_green.png';
+import yellowpengushopping from '../img/pengu_shopping_yellow.png';
 import broccoli from '../img/broccoli.png';
 import baguette from '../img/baguette.png';
 import coffeebeans from '../img/coffeebeans.png';
@@ -42,6 +45,13 @@ const images = {
   tomato,
 };
 
+const penguImages = [
+  redpengushopping,
+  bluepengushopping,
+  yellowpengushopping,
+  greenpengushopping,
+];
+
 function GroceryGame(props) {
   const { roomID } = useParams();
   const location = useLocation();
@@ -63,13 +73,19 @@ function GroceryGame(props) {
   const gameInfo = useStore(({ gameSlice }) => gameSlice.current);
   console.log('in grocery game:', gameInfo);
   const [pointsArray, setPointsArray] = useState([]);
+  const [penguImage, setPenguImage] = useState(redpengushopping);
 
   useEffect(() => {
     if (gameInfo && gameInfo.players) {
       const newPointsArray = gameInfo.players.map((player) => player.points);
       setPointsArray(newPointsArray);
+
+      const playerIndex = gameInfo.players.findIndex((player) => player.name === playerName);
+      if (playerIndex >= 0) {
+        setPenguImage(penguImages[playerIndex % penguImages.length]);
+      }
     }
-  }, [gameInfo]);
+  }, [gameInfo, playerName]);
 
   console.log('points array:', pointsArray);
 
@@ -146,6 +162,11 @@ function GroceryGame(props) {
     }
   };
 
+  if (!gameInfo) {
+    // Optionally, show a loading indicator while gameInfo is being fetched
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="grocery-game-page">
       <PageTopBar language />
@@ -199,7 +220,7 @@ function GroceryGame(props) {
       <ProgressBar playerProgress={pointsArray} />
       <img
         className="pengu-shopping-bg"
-        src={pengushopping}
+        src={penguImage}
         alt="pengu shopping"
       />
     </div>

@@ -17,6 +17,10 @@ import bluepengu from '../img/bluepengu.png';
 import redpengu from '../img/redpengu.png';
 import yellowpengu from '../img/yellowpengu.png';
 import greenpengu from '../img/greenpengu.png';
+import p1light from './lets-go/images-lets-go/Pink Light.png';
+import p2light from './lets-go/images-lets-go/Blue Light.png';
+import p3light from './lets-go/images-lets-go/Yellow Light.png';
+import p4light from './lets-go/images-lets-go/Green Light.png';
 
 const rankingNumberOrder = [first, second, third, fourth];
 const penguIconOrder = [redpengu, bluepengu, yellowpengu, greenpengu];
@@ -167,6 +171,12 @@ function GroceryEndScreen() {
         {playerRankBar(gameInfo.ranking[2], 2, playerIndexByRank[2])}
         {winnerRankBar(gameInfo.ranking[0], 0, playerIndexByRank[0])}
         {playerRankBar(gameInfo.ranking[1], 1, playerIndexByRank[1])}
+      </div>
+      <div className="lights">
+        <img src={p1light} className="P1Light" />
+        <img src={p2light} className="P2Light" />
+        <img src={p3light} className="P3Light" />
+        <img src={p4light} className="P4Light" />
       </div>
       {isAdmin && adminButtons()}
     </div>
